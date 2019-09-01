@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="font-th">แบบคัดกรองเบาหวานความดันโลหิต</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h4 id="head-form" class="font-th">
+    แบบคัดกรองเบาหวานและความดันโลหิตในประชากรอายุ 35 ปี
+  </h4>
+  <ion-list>
+
+        <ion-label class="headmenu">สิทธิ</ion-label>
+        <ion-select class="font-th" value="brown" okText="ตกลง" cancelText="ยกเลิก">
+          <ion-select-option value="brown" class="font-th">ผู้ประกันตน</ion-select-option>
+          <ion-select-option value="blonde" class="font-th">ข้าราชการ</ion-select-option>
+          <ion-select-option value="black" class="font-th">สิทธิหลักประกันสุขภาพถ้วนหน้า</ion-select-option>
+        </ion-select>
+    
+  </ion-list>
+  
+  <ion-list>
+      <ion-label class="headmenu">ผู้รับการตรวจ</ion-label>
+
+    <ion-item>
+      <ion-label position="floating" class="font-th">ชื่อ*</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" class="font-th">สกุล*</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <ion-radio-group>
+      <ion-list-header>
+        <ion-label class="font-th">เพศ</ion-label>
+      </ion-list-header>
+      
+      <ion-item>
+        <ion-label class="font-th">ชาย</ion-label>
+        <ion-radio slot="start" value="M" name="sex" checked></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="font-th">หญิง</ion-label>
+        <ion-radio slot="start" value="F" name="sex"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+    <ion-item>
+      <ion-label position="floating" class="font-th">เลขที่บัตรประชาชน*</ion-label>
+      <ion-input [(ngModel)]="cid"></ion-input>
+    </ion-item>
+
+    <ion-item-group>
+      <ion-list-header>
+        <ion-label class="headmenu">ส่วนที่ 1</ion-label>
+      </ion-list-header>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-list-header>
+        <ion-label class="font-th">1.ข้อมูลครอบครัว</ion-label>
+      </ion-list-header>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-list-header>
+        <ion-label class="font-th">1.1 พ่อ หรือ แม่ ของท่านมีประวัติการเจ็บป่วยด้วยโรค</ion-label>
+      </ion-list-header>
+    </ion-item-group>
+    
+    <ion-item-group>
+      <ion-item>
+        <ion-checkbox color="primary"></ion-checkbox><div class="font-th"> 1.1.1 เบาหวาน (DM)</div>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox color="primary"></ion-checkbox><div class="font-th"> 1.1.2 ความดันโลหิตสูง (HT)</div>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox color="primary"></ion-checkbox><div class="font-th"> 1.1.3 โรคเก๊าท์ (Gout)</div>
+      </ion-item>
+    </ion-item-group>
+
+  </ion-list>
+</ion-content>
