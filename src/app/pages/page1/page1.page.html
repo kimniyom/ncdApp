@@ -1,0 +1,68 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="font-th">ส่วนที่ 1</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item-group>
+        <ion-list-header>
+            <ion-label class="headmenu">ส่วนที่ 1</ion-label>
+        </ion-list-header>
+    </ion-item-group>
+
+    <ion-item-group>
+        <ion-list-header>
+            <ion-label class="subheadmenu">1.ข้อมูลครอบครัว</ion-label>
+        </ion-list-header>
+    </ion-item-group>
+
+    <ion-item-group>
+        <ion-list-header>
+            <div class="subheadmenu">1.1 พ่อ หรือ แม่ ของท่านมีประวัติการเจ็บป่วยด้วยโรค</div>
+        </ion-list-header>
+    </ion-item-group>
+
+    <ion-item-group>
+        <ion-item>
+            <ion-checkbox color="primary"></ion-checkbox>
+            <div class="font-th"> 1.1.1 เบาหวาน (DM)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary"></ion-checkbox>
+            <div class="font-th"> 1.1.2 ความดันโลหิตสูง (HT)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary"></ion-checkbox>
+            <div class="font-th"> 1.1.3 โรคเก๊าท์ (Gout)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary"></ion-checkbox>
+            <div class="font-th"> 1.1.4 ไตวายเรื้อรัง (CRF)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary"></ion-checkbox>
+            <div class="font-th"> 1.1.5 กล้ามเนื้อหัวใจตาย (MI)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary"></ion-checkbox>
+            <div class="font-th"> 1.1.6 โรคเส้นเลือดสมอง (Stroke)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary"></ion-checkbox>
+            <div class="font-th"> 1.1.7 ถุงลมโป่งพอง (COPD)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary"></ion-checkbox>
+            <div class="font-th"> 1.1.8 ไม่ทราบ (MI)</div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating" class="font-th">1.1.9 อื่น ๆ ระบุเช่นฆ่าตัวตาย</ion-label>
+            <ion-input [(ngModel)]="etc"></ion-input>
+        </ion-item>
+    </ion-item-group>
+</ion-content>
