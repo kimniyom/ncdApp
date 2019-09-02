@@ -18,23 +18,19 @@
         <ion-card-title class="text-color">3. กรณีที่ท่านมีประวัติเจ็บป่วยตามข้อ 2 ท่านปฏิบัติอย่างไร</ion-card-title>
     </ion-card-header>
 </ion-card>
-
-
 <ion-content class="content">
-
-    <ion-radio-group style="margin-top:0px;">
+    <ion-radio-group [(ngModel)]="service" style="margin-top:0px;">
         <ion-item>
-            <ion-radio color="primary"></ion-radio>
-            <div class="font-th "> 3.1 รับการรักษาอยู่ / ปฏิบัติตามที่แพทย์แนะนำ</div>
+            <ion-radio color="primary" value="1"></ion-radio>
+            <div class="font-th"> 3.1 รับการรักษาอยู่ / ปฏิบัติตามที่แพทย์แนะนำ</div>
         </ion-item>
         <ion-item>
-            <ion-radio color="primary"></ion-radio>
+            <ion-radio color="primary" value="2"></ion-radio>
             <div class="font-th"> 3.2 รับการรักษาแต่ไม่สม่ำเสมอ</div>
         </ion-item>
         <ion-item>
-            <ion-radio color="primary "></ion-radio>
-            <div class="font-th "> 3.3 เคยรักษา ขณะนี้ไม่รักษา / หายาทานเอง</div>
+            <ion-radio color="primary" value="3"></ion-radio>
+            <div class="font-th"> 3.3 เคยรักษา ขณะนี้ไม่รักษา / หายาทานเอง</div>
         </ion-item>
     </ion-radio-group>
-
 </ion-content>

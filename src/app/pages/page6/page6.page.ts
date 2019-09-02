@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { Platform, NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 @Component({
-  selector: 'app-page3',
-  templateUrl: './page3.page.html',
-  styleUrls: ['./page3.page.scss'],
+  selector: 'app-page6',
+  templateUrl: './page6.page.html',
+  styleUrls: ['./page6.page.scss'],
 })
-export class Page3Page implements OnInit {
-  service;
+export class Page6Page implements OnInit {
+  exercise;
   constructor(
     private router: Router
   ) { }
@@ -16,17 +16,14 @@ export class Page3Page implements OnInit {
   ngOnInit() {
   }
 
-  save(){
-    let service = this.service;
-    if(!service){
+  save() {
+    let exercise = this.exercise;
+    if(!exercise){
       alert("กรุณาเลือกข้อมูล...");
       return false;
     }
-    let data = {
-      service: service
-    }
-    //console.log(data);
-    this.router.navigateByUrl('/page4');
+    let data = {exercise: exercise}
+    this.router.navigateByUrl('/page7');
   }
 
 }

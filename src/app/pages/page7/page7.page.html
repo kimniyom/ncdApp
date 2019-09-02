@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="font-th">ส่วนที่ 1</ion-title>
+      <ion-buttons slot="end">
+          <ion-button (click)="save()">
+              ถัดไป
+              <ion-icon name="arrow-forward"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-card class="bg-head">
+  <ion-card-header style="padding:10px;">
+      <ion-card-title class="text-color">7. ท่านชอบอาหารรสใด (ตอบได้มากกว่า 1 ข้อ)</ion-card-title>
+  </ion-card-header>
+</ion-card>
+
+<ion-content class="content">
+  <ion-item-group padding>
+      <ion-item>
+          <ion-checkbox color="primary" [(ngModel)]="sweet" (ionChange)="getFood()" [checked]="1"></ion-checkbox>
+          <div class="font-th"> 7.1 หวาน</div>
+      </ion-item>
+      <ion-item>
+          <ion-checkbox color="primary" [(ngModel)]="salty" (ionChange)="getFood()" [checked]="1"></ion-checkbox>
+          <div class="font-th"> 7.2 เค็ม</div>
+      </ion-item>
+      <ion-item>
+          <ion-checkbox color="primary" [(ngModel)]="creamy" (ionChange)="getFood()" [checked]="1"></ion-checkbox>
+          <div class="font-th"> 7.3 มัน</div>
+      </ion-item>
+      <ion-item>
+          <ion-checkbox color="primary" [(ngModel)]="nonselect" (ionChange)="getFoodNon()" [checked]="1"></ion-checkbox>
+          <div class="font-th"> 7.4 ไม่ชอบทุกข้อ</div>
+      </ion-item>
+  </ion-item-group>
+
+</ion-content>
