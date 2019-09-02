@@ -4,9 +4,11 @@
             <ion-back-button defaultHref="home"></ion-back-button>
         </ion-buttons>
         <ion-title class="font-th">ผู้รับการตรวจ</ion-title>
-        <ion-button slot="end" (click)="save()">
-            <ion-icon slot="icon-only" name="save"></ion-icon>SAVE
-        </ion-button>
+        <ion-buttons slot="end">
+            <ion-button (click)="save()">
+                ถัดไป <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -15,52 +17,43 @@
         แบบคัดกรองเบาหวานและความดันโลหิตในประชากรอายุ 35 ปี
     </h4>
     <ion-list>
-
         <ion-label class="headmenu">สิทธิ</ion-label>
         <ion-select class="font-th" value="brown" okText="ตกลง" cancelText="ยกเลิก">
             <ion-select-option value="brown" class="font-th">ผู้ประกันตน</ion-select-option>
             <ion-select-option value="blonde" class="font-th">ข้าราชการ</ion-select-option>
             <ion-select-option value="black" class="font-th">สิทธิหลักประกันสุขภาพถ้วนหน้า</ion-select-option>
         </ion-select>
-
     </ion-list>
 
     <ion-list>
         <ion-label class="headmenu">ผู้รับการตรวจ</ion-label>
-
         <ion-item>
-            <ion-label position="floating" class="font-th">ชื่อ*</ion-label>
-            <ion-input></ion-input>
+            <ion-label position="stacked" class="textboxlabel">เลขที่บัตรประชาชน*</ion-label>
+            <ion-input [(ngModel)]="cid" maxlength="13" class="textbox"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label position="floating" class="font-th">สกุล*</ion-label>
-            <ion-input></ion-input>
+            <ion-label position="stacked" class="textboxlabel">ชื่อ*</ion-label>
+            <ion-input class="textbox"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked" class="textboxlabel">สกุล*</ion-label>
+            <ion-input class="textbox"></ion-input>
         </ion-item>
 
         <ion-radio-group>
             <ion-list-header>
-                <ion-label class="font-th">เพศ</ion-label>
+                <ion-label class="textboxlabel">เพศ</ion-label>
             </ion-list-header>
-            <ion-grid>
-                <ion-row>
-                    <ion-col>
-                        <ion-item>
-                            <ion-label class="font-th">ชาย</ion-label>
-                            <ion-radio slot="start" value="M" name="sex" checked></ion-radio>
-                        </ion-item>
-                    </ion-col>
-                    <ion-col>
-                        <ion-item>
-                            <ion-label class="font-th">หญิง</ion-label>
-                            <ion-radio slot="start" value="F" name="sex"></ion-radio>
-                        </ion-item>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
+            <ion-item>
+                <ion-label class="textbox">ชาย</ion-label>
+                <ion-radio slot="start" value="M" name="sex" checked></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label class="textbox">หญิง</ion-label>
+                <ion-radio slot="start" value="F" name="sex"></ion-radio>
+            </ion-item>
         </ion-radio-group>
-        <ion-item>
-            <ion-label position="floating" class="font-th">เลขที่บัตรประชาชน*</ion-label>
-            <ion-input [(ngModel)]="cid"></ion-input>
-        </ion-item>
+
     </ion-list>
 </ion-content>

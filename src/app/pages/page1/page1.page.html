@@ -4,29 +4,29 @@
             <ion-back-button defaultHref="home"></ion-back-button>
         </ion-buttons>
         <ion-title class="font-th">ส่วนที่ 1</ion-title>
+        <ion-buttons slot="end">
+                <ion-button (click)="save()">
+                    ถัดไป <ion-icon name="arrow-forward"></ion-icon>
+                </ion-button>
+            </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-item-group>
-        <ion-list-header>
+<ion-content>
+    <ion-card class="welcome-card">
+        <!--
+        <ion-img src="/assets/shapes.svg"></ion-img>
+        -->
+        <ion-card-header>
             <ion-label class="headmenu">ส่วนที่ 1</ion-label>
-        </ion-list-header>
-    </ion-item-group>
+            <ion-card-title class="headmenu">1.ข้อมูลครอบครัว</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="subheadmenu">
+            1.1 พ่อ หรือ แม่ ของท่านมีประวัติการเจ็บป่วยด้วยโรค
+        </ion-card-content>
+    </ion-card>
 
-    <ion-item-group>
-        <ion-list-header>
-            <ion-label class="subheadmenu">1.ข้อมูลครอบครัว</ion-label>
-        </ion-list-header>
-    </ion-item-group>
-
-    <ion-item-group>
-        <ion-list-header>
-            <div class="subheadmenu">1.1 พ่อ หรือ แม่ ของท่านมีประวัติการเจ็บป่วยด้วยโรค</div>
-        </ion-list-header>
-    </ion-item-group>
-
-    <ion-item-group>
+    <ion-item-group padding>
         <ion-item>
             <ion-checkbox color="primary"></ion-checkbox>
             <div class="font-th"> 1.1.1 เบาหวาน (DM)</div>
@@ -61,8 +61,8 @@
         </ion-item>
 
         <ion-item>
-            <ion-label position="floating" class="font-th">1.1.9 อื่น ๆ ระบุเช่นฆ่าตัวตาย</ion-label>
-            <ion-input [(ngModel)]="etc"></ion-input>
+            <ion-label position="floating" class="textboxlabel"> 1.1.9 อื่น ๆ ระบุเช่นฆ่าตัวตาย</ion-label>
+            <ion-input [(ngModel)]="etc" class="textbox"></ion-input>
         </ion-item>
     </ion-item-group>
 </ion-content>
