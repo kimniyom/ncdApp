@@ -5,64 +5,110 @@
         </ion-buttons>
         <ion-title class="font-th">ส่วนที่ 1</ion-title>
         <ion-buttons slot="end">
-                <ion-button (click)="save()">
-                    ถัดไป <ion-icon name="arrow-forward"></ion-icon>
-                </ion-button>
-            </ion-buttons>
+            <ion-button (click)="save()">
+                ถัดไป
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-card class="welcome-card">
-        <!--
-        <ion-img src="/assets/shapes.svg"></ion-img>
-        -->
-        <ion-card-header>
-            <ion-label class="headmenu">ส่วนที่ 1</ion-label>
-            <ion-card-title class="headmenu">1.ข้อมูลครอบครัว</ion-card-title>
-        </ion-card-header>
-        <ion-card-content class="subheadmenu">
+<ion-card class="bg-head">
+    <ion-card-header style="padding:10px;">
+        <ion-card-title class="text-color">1. ข้อมูลครอบครัว</ion-card-title>
+    </ion-card-header>
+</ion-card>
+
+<ion-content class="content">
+
+    <ion-card class="welcome-card ">
+        <ion-card-content class="subheadmenu ">
             1.1 พ่อ หรือ แม่ ของท่านมีประวัติการเจ็บป่วยด้วยโรค
         </ion-card-content>
     </ion-card>
-
     <ion-item-group padding>
         <ion-item>
-            <ion-checkbox color="primary"></ion-checkbox>
-            <div class="font-th"> 1.1.1 เบาหวาน (DM)</div>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.1.1 เบาหวาน (DM)</div>
         </ion-item>
         <ion-item>
-            <ion-checkbox color="primary"></ion-checkbox>
-            <div class="font-th"> 1.1.2 ความดันโลหิตสูง (HT)</div>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.1.2 ความดันโลหิตสูง (HT)</div>
         </ion-item>
         <ion-item>
-            <ion-checkbox color="primary"></ion-checkbox>
-            <div class="font-th"> 1.1.3 โรคเก๊าท์ (Gout)</div>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.1.3 โรคเก๊าท์ (Gout)</div>
         </ion-item>
         <ion-item>
-            <ion-checkbox color="primary"></ion-checkbox>
-            <div class="font-th"> 1.1.4 ไตวายเรื้อรัง (CRF)</div>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.1.4 ไตวายเรื้อรัง (CRF)</div>
         </ion-item>
         <ion-item>
-            <ion-checkbox color="primary"></ion-checkbox>
-            <div class="font-th"> 1.1.5 กล้ามเนื้อหัวใจตาย (MI)</div>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.1.5 กล้ามเนื้อหัวใจตาย (MI)</div>
         </ion-item>
         <ion-item>
-            <ion-checkbox color="primary"></ion-checkbox>
-            <div class="font-th"> 1.1.6 โรคเส้นเลือดสมอง (Stroke)</div>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.1.6 โรคเส้นเลือดสมอง (Stroke)</div>
         </ion-item>
         <ion-item>
-            <ion-checkbox color="primary"></ion-checkbox>
-            <div class="font-th"> 1.1.7 ถุงลมโป่งพอง (COPD)</div>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.1.7 ถุงลมโป่งพอง (COPD)</div>
         </ion-item>
         <ion-item>
-            <ion-checkbox color="primary"></ion-checkbox>
-            <div class="font-th"> 1.1.8 ไม่ทราบ (MI)</div>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.1.8 ไม่ทราบ (MI)</div>
         </ion-item>
 
         <ion-item>
-            <ion-label position="floating" class="textboxlabel"> 1.1.9 อื่น ๆ ระบุเช่นฆ่าตัวตาย</ion-label>
-            <ion-input [(ngModel)]="etc" class="textbox"></ion-input>
+            <ion-label position="stacked " class="textboxlabel "> 1.1.9 อื่น ๆ ระบุเช่นฆ่าตัวตาย</ion-label>
+            <ion-input [(ngModel)]="etc " class="textbox "></ion-input>
         </ion-item>
     </ion-item-group>
+
+    <ion-card class="welcome-card ">
+        <ion-card-content class="subheadmenu ">
+            1.2 พี่น้อง(สายตรง) ของท่านมีประวัติการเจ็บป่วยด้วยโรค
+        </ion-card-content>
+    </ion-card>
+    <ion-item-group padding>
+        <ion-item>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.2.1 เบาหวาน (DM)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.2.2 ความดันโลหิตสูง (HT)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.2.3 โรคเก๊าท์ (Gout)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.2.4 ไตวายเรื้อรัง (CRF)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.2.5 กล้ามเนื้อหัวใจตาย (MI)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.2.6 โรคเส้นเลือดสมอง (Stroke)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.2.7 ถุงลมโป่งพอง (COPD)</div>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox color="primary "></ion-checkbox>
+            <div class="font-th "> 1.2.8 ไม่ทราบ (MI)</div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked " class="textboxlabel "> 1.2.9 อื่น ๆ ระบุเช่นฆ่าตัวตาย</ion-label>
+            <ion-input [(ngModel)]="etc " class="textbox "></ion-input>
+        </ion-item>
+    </ion-item-group>
+
 </ion-content>

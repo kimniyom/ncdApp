@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { Platform, NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 @Component({
-  selector: 'app-page1',
-  templateUrl: './page1.page.html',
-  styleUrls: ['./page1.page.scss'],
+  selector: 'app-page3',
+  templateUrl: './page3.page.html',
+  styleUrls: ['./page3.page.scss'],
 })
-export class Page1Page implements OnInit {
-  public etc: any;
+export class Page3Page implements OnInit {
+
   constructor(
     private router: Router
   ) { }
@@ -17,7 +17,7 @@ export class Page1Page implements OnInit {
   }
 
   save(){
-    this.router.navigateByUrl('/page2');
+    this.router.navigateByUrl('/page4');
   }
 
 }

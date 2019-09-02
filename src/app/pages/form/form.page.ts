@@ -10,7 +10,6 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 export class FormPage implements OnInit {
   rootPage;
   cid;
-  groupone:[];
   constructor(
     private router: Router
   ) { }

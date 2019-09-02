@@ -4,7 +4,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'form', loadChildren: './pages/form/form.module#FormPageModule' },
-  { path: 'page1', loadChildren: './pages/page1/page1.module#Page1PageModule' }
+  { path: 'page1', loadChildren: './pages/page1/page1.module#Page1PageModule' },
+  { path: 'page2', loadChildren: './pages/page2/page2.module#Page2PageModule' },
+  { path: 'page3', loadChildren: './pages/page3/page3.module#Page3PageModule' },
+  { path: 'page4', loadChildren: './pages/page4/page4.module#Page4PageModule' }
 ];
 @NgModule({
   imports: [

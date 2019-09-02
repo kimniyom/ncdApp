@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="font-th">ส่วนที่ 1</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="save()">
+                ถัดไป
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-card class="bg-head">
+    <ion-card-header style="padding:10px;">
+        <ion-card-title class="text-color">4. ท่านสูบบุหรี่หรือไม่</ion-card-title>
+    </ion-card-header>
+</ion-card>
+
+
+<ion-content class="content">
+
+    <ion-radio-group [(ngModel)]="smoke" (ionChang)="getSmoke()" style="margin-top:0px;">
+        <ion-item>
+            <ion-radio color="primary" value="1"></ion-radio>
+            <div class="font-th "> 4.1 สูบ</div>
+        </ion-item>
+        <ion-item>
+            <ion-radio color="primary" value="2"></ion-radio>
+            <div class="font-th"> 4.2 ไม่สูบ</div>
+        </ion-item>
+        <ion-item>
+            <ion-radio color="primary" value="3"></ion-radio>
+            <div class="font-th "> 4.3 เคยสูบแต่เลิกแล้ว</div>
+        </ion-item>
+    </ion-radio-group>
+    <div class="smoke" *ngIf="showSmoke == true">
+        <ion-item>
+            <ion-label position="fixed">จำนวน มวน/วัน</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="fixed">จำนวน Pack/year</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="fixed">ชนิดของบุหรี่</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+    </div>
+
+    <div class="smokecancel" *ngIf="showCancel == true">
+        <ion-item>
+            <ion-label position="fixed">ชนิดของบุหรี่ที่เคยสูบ</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="fixed">ระยะเวลา(ปี) ตั้งแต่เริ่มสูบบุหรี่ถึงปัจจุบัน</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+    </div>
+</ion-content>
