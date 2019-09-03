@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { platformBrowser } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Platform, NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 @Component({
@@ -9,16 +10,31 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 })
 export class Page3Page implements OnInit {
   service;
+  flag;
+  question: boolean = false;
   constructor(
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.route.queryParams
+      .subscribe(params => {
+        console.log(params); // {order: "popular"}
+
+        this.flag = params.flag;
+        if(this.flag == 1){
+          this.question = true;
+        } else {
+          this.question = false;
+        }
+      });
   }
 
-  save(){
+
+  save() {
     let service = this.service;
-    if(!service){
+    if (!service) {
       alert("กรุณาเลือกข้อมูล...");
       return false;
     }
@@ -26,6 +42,10 @@ export class Page3Page implements OnInit {
       service: service
     }
     //console.log(data);
+    this.router.navigateByUrl('/page4');
+  }
+
+  next(){
     this.router.navigateByUrl('/page4');
   }
 

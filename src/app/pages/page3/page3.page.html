@@ -5,7 +5,12 @@
         </ion-buttons>
         <ion-title class="font-th">ส่วนที่ 1</ion-title>
         <ion-buttons slot="end">
-            <ion-button (click)="save()">
+            <ion-button (click)="save()" *ngIf="question">
+                ถัดไป
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button>
+
+            <ion-button (click)="next()" *ngIf="!question">
                 ถัดไป
                 <ion-icon name="arrow-forward"></ion-icon>
             </ion-button>
@@ -19,7 +24,7 @@
     </ion-card-header>
 </ion-card>
 <ion-content class="content">
-    <ion-radio-group [(ngModel)]="service" style="margin-top:0px;">
+    <ion-radio-group [(ngModel)]="service" style="margin-top:0px;" *ngIf="question">
         <ion-item>
             <ion-radio color="primary" value="1"></ion-radio>
             <div class="font-th"> 3.1 รับการรักษาอยู่ / ปฏิบัติตามที่แพทย์แนะนำ</div>
@@ -33,4 +38,8 @@
             <div class="font-th"> 3.3 เคยรักษา ขณะนี้ไม่รักษา / หายาทานเอง</div>
         </ion-item>
     </ion-radio-group>
+    <div *ngIf="!question">
+        <div class="headmenu" style="text-align: center; margin-top: 20px;">* ท่านไม่มีประวัติการเจ็บป่วยในข้อ 2 ข้ามไปข้อถัดไป</div>
+
+    </div>
 </ion-content>

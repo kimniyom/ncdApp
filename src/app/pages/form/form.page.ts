@@ -8,8 +8,10 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   styleUrls: ['./form.page.scss'],
 })
 export class FormPage implements OnInit {
-  rootPage;
   cid;
+  name;
+  lname;
+  sex;
   constructor(
     private router: Router
   ) { }
@@ -19,7 +21,19 @@ export class FormPage implements OnInit {
   }
 
   save(){
-    this.router.navigateByUrl('/page1');
+    if(!this.sex || !this.cid || !this.name || !this.lname){
+      alert("กรอกข้อมูลไม่ครบ...");
+      return false;
+    }
+
+    let data = {
+      cid: this.cid,
+      sex: this.sex,
+      name: this.name,
+      lname: this.lname
+    }
+    console.log(data);
+    //this.router.navigateByUrl('/page1');
   }
 
   
