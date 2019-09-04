@@ -1,33 +1,40 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="home"></ion-back-button>
-        </ion-buttons>
-        <ion-title class="font-th">ผู้รับการตรวจ</ion-title>
-        <ion-buttons slot="end">
-            <ion-button (click)="save()">
-                ถัดไป
-                <ion-icon name="arrow-forward"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
+<!--
+<ion-header no-border>
+        <ion-toolbar color="new">
+            <ion-buttons slot="start">
+                <ion-back-button defaultHref="home"></ion-back-button>
+            </ion-buttons>
+            <ion-buttons slot="end">
+                <ion-button (click)="save()">
+                    ถัดไป
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-header>
+-->
+<ion-toolbar color="green">
+    <ion-card class="bg-head">
+        <ion-card-header style="padding:10px; padding-top:20px;">
+            <ion-card-title class="text-color" style="text-align: center;">
+                แบบคัดกรองเบาหวานและความดันโลหิต<br />
+                ในประชากรอายุ 35 ปี
+            </ion-card-title>
+        </ion-card-header>
+    </ion-card>
+</ion-toolbar>
 
 <ion-content padding>
-    <h4 class="headmenu">
-        แบบคัดกรองเบาหวานและความดันโลหิตในประชากรอายุ 35 ปี
-    </h4>
-    <ion-list>
-        <ion-label class="headmenu">สิทธิ</ion-label>
-        <ion-select class="font-th" okText="ตกลง" cancelText="ยกเลิก">
-            <ion-select-option value="1" class="font-th">ผู้ประกันตน</ion-select-option>
-            <ion-select-option value="2" class="font-th">ข้าราชการ</ion-select-option>
-            <ion-select-option value="3" class="font-th">สิทธิหลักประกันสุขภาพถ้วนหน้า</ion-select-option>
-        </ion-select>
-    </ion-list>
-
     <ion-list>
         <ion-label class="headmenu">ผู้รับการตรวจ</ion-label>
+        <ion-item>
+            <ion-label position="stacked" class="textboxlabel">สิทธิ*</ion-label>
+            <ion-select [(ngModel)]="privilege" class="font-th" okText="ตกลง" cancelText="ยกเลิก">
+                <ion-select-option value="1" class="font-th">ผู้ประกันตน</ion-select-option>
+                <ion-select-option value="2" class="font-th">ข้าราชการ</ion-select-option>
+                <ion-select-option value="3" class="font-th">สิทธิหลักประกันสุขภาพถ้วนหน้า</ion-select-option>
+            </ion-select>
+        </ion-item>
         <ion-item>
             <ion-label position="stacked" class="textboxlabel">เลขที่บัตรประชาชน*</ion-label>
             <ion-input [(ngModel)]="cid" maxlength="13" class="textbox"></ion-input>
@@ -57,4 +64,45 @@
         </ion-radio-group>
 
     </ion-list>
+
+
 </ion-content>
+
+<!--
+<ion-footer no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start" routerLink="/">
+            <ion-button color="dark">
+                <ion-icon slot="icon-only" name="home"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button color="green" (click)="save()">
+                <ion-icon slot="icon-only" name="save"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>
+-->
+<ion-footer no-border>
+    <ion-toolbar>
+        <ion-tabs>
+            <ion-tab-bar slot="bottom">
+                <ion-tab-button tab="tab1" routerLink="/">
+                    <ion-icon name="home"></ion-icon>
+                    <ion-label>Home</ion-label>
+                </ion-tab-button>
+                <!--
+                <ion-tab-button tab="tab2">
+                    <ion-icon name="apps"></ion-icon>
+                    <ion-label>Tab Two</ion-label>
+                </ion-tab-button>
+                -->
+                <ion-tab-button tab="tab3" (click)="save()">
+                    <ion-icon name="arrow-round-forward"></ion-icon>
+                    <ion-label>Next</ion-label>
+                </ion-tab-button>
+            </ion-tab-bar>
+        </ion-tabs>
+    </ion-toolbar>
+</ion-footer>

@@ -45,6 +45,10 @@ export class Page3Page implements OnInit {
   }
 
   next(){
+    let data = {
+      service: ""
+    }
+    sessionStorage.setItem("page3",JSON.stringify(data));
     this.router.navigateByUrl('/page4');
   }
 

@@ -8,6 +8,7 @@
 2. Body and some general stuff
 *********************************/
 
+
 #font-th {
     font-family: 'thaisanslite';
 }
@@ -30,7 +31,7 @@
 .headmenu {
     font-family: 'thaisanslite';
     font-weight: bold;
-    color: cadetblue;
+    color: #5f9ea0;
     font-size: 20px;
 }
 
@@ -50,4 +51,21 @@
 .textbox {
     font-size: 18px;
     font-family: 'thaisanslite';
+}
+
+.bg-head {
+    background-color:#018577;
+    margin: 0px;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+}
+
+.bg-head .text-color {
+    color: #ffffff;
+    font-family: 'thaisanslite';
+    font-weight: bold;
+    font-size: 20px;
 }
