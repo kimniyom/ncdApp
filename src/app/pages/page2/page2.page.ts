@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Platform, NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 @Component({
@@ -8,6 +9,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   styleUrls: ['./page2.page.scss'],
 })
 export class Page2Page implements OnInit {
+  headName;
   me_dm;
   me_ht;
   me_cirrhosis;//โรคตับ
@@ -26,15 +28,29 @@ export class Page2Page implements OnInit {
   me_seared_foot_hand;//ชาปลายมือ ปลายเท้า
 
   constructor(
-    private router: Router
+    private router: Router,
+    private alert: AlertController
   ) { }
 
   ngOnInit() {
+    let item = JSON.parse(sessionStorage.getItem('form'));
+    this.headName = item.name + ' ' + item.lname;
+  }
+
+  async Alert(text) {
+    const alert = await this.alert.create({
+      header: '!แจ้งเตือน',
+      subHeader: text,
+      //message: text,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   save(){
     if(!this.me_dm || !this.me_ht || !this.me_cirrhosis || !this.me_paralysis || !this.me_heart || !this.me_dyslipidemia || !this.me_foot || !this.me_confined || !this.me_water || !this.me_urine || !this.me_eat || !this.me_weight_loss || !this.me_lesion_mouth || !this.me_skin || !this.me_eye || !this.me_seared_foot_hand){
-      alert("เลือกข้อมูลไม่ครบ...!");
+      this.Alert("เลือกข้อมูลไม่ครบ...!");
       return false;
     }
     let data = {

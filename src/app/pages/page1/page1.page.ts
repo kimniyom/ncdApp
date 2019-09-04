@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Platform, NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 @Component({
@@ -8,6 +9,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   styleUrls: ['./page1.page.scss'],
 })
 export class Page1Page implements OnInit {
+  headName;
   mom_dm = false;//เบาหวาน
   mom_ht = false;//ความดัน
   mom_gout = false;//เก้๊าท์
@@ -29,21 +31,37 @@ export class Page1Page implements OnInit {
   b_etc = "";//อื่น ๆ
 
   constructor(
-    private router: Router
+    private router: Router,
+    private alert: AlertController
   ) { }
 
   ngOnInit() {
+    let item = JSON.parse(sessionStorage.getItem('form'));
+    this.headName = item.name + ' ' + item.lname;
+  }
+  
+  async Alert(text) {
+    const alert = await this.alert.create({
+      header: '!แจ้งเตือน',
+      subHeader: text,
+      //message: text,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   save() {
     let mom = this.checkMom();
     let brethren = this.checkBrethren();
     if (mom == false) {
-      alert("ไม่ได้เลือกข้อมูลในส่วนแม่หรือพ่อ...!");
+      //alert("ไม่ได้เลือกข้อมูลในส่วนแม่หรือพ่อ...!");
+      this.Alert("ไม่ได้เลือกข้อมูลในส่วนแม่หรือพ่อ...!");
       return false;
     }
     if (brethren == false) {
-      alert("ไม่ได้เลือกข้อมูลในส่วนพี่น้อง...!");
+      this.Alert("ไม่ได้เลือกข้อมูลในส่วนพี่น้อง...!");
+      //alert("ไม่ได้เลือกข้อมูลในส่วนพี่น้อง...!");
       return false;
     }
     let data = {
