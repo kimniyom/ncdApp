@@ -52,7 +52,8 @@ export class Page4Page implements OnInit {
       typesmokeold: this.typesmokeold,
       amountyear: this.amountyear
     }
-    console.log(data);
+    sessionStorage.setItem("page4",JSON.stringify(data));
+    //console.log(data);
     this.router.navigateByUrl('/page5');
   }
 

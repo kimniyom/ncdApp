@@ -36,8 +36,8 @@ export class Page5Page implements OnInit {
       drink: drink,
       amountdrinkweek: this.amountdrinkweek
     }
-
-    console.log(data);
+    sessionStorage.setItem("page5",JSON.stringify(data));
+    //console.log(data);
     this.router.navigateByUrl('/page6');
   }
 

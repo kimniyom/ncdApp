@@ -21,7 +21,6 @@ export class Page3Page implements OnInit {
     this.route.queryParams
       .subscribe(params => {
         console.log(params); // {order: "popular"}
-
         this.flag = params.flag;
         if(this.flag == 1){
           this.question = true;
@@ -30,7 +29,6 @@ export class Page3Page implements OnInit {
         }
       });
   }
-
 
   save() {
     let service = this.service;
@@ -41,6 +39,7 @@ export class Page3Page implements OnInit {
     let data = {
       service: service
     }
+    sessionStorage.setItem("page3",JSON.stringify(data));
     //console.log(data);
     this.router.navigateByUrl('/page4');
   }

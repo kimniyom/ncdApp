@@ -55,9 +55,8 @@ export class Page2Page implements OnInit {
       me_eye: this.me_eye,
       me_seared_foot_hand: this.me_seared_foot_hand
     }
-
+    sessionStorage.setItem("page2",JSON.stringify(data));
     let check = this.checkDiag();
-    console.log(check);
     
     this.router.navigate(['/page3'],{queryParams: {flag: check}});
   }

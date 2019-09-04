@@ -32,8 +32,9 @@ export class FormPage implements OnInit {
       name: this.name,
       lname: this.lname
     }
-    console.log(data);
-    //this.router.navigateByUrl('/page1');
+    //console.log(data);
+    sessionStorage.setItem("form",JSON.stringify(data));
+    this.router.navigateByUrl('/page1');
   }
 
   

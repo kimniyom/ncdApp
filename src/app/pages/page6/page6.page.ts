@@ -23,6 +23,7 @@ export class Page6Page implements OnInit {
       return false;
     }
     let data = {exercise: exercise}
+    sessionStorage.setItem("page6",JSON.stringify(data));
     this.router.navigateByUrl('/page7');
   }
 

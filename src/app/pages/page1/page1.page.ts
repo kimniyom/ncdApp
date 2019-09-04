@@ -66,6 +66,7 @@ export class Page1Page implements OnInit {
       b_none: this.b_none,//ไม่ทราบ
       b_etc: this.b_etc//อื่น ๆ
     }
+    sessionStorage.setItem("page1",JSON.stringify(data));
     this.router.navigateByUrl('/page2');
   }
 
