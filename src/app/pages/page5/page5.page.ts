@@ -8,6 +8,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   styleUrls: ['./page5.page.scss'],
 })
 export class Page5Page implements OnInit {
+  headName;
   drink;
   amountdrinkweek;
   showDrink: boolean = false;
@@ -16,6 +17,8 @@ export class Page5Page implements OnInit {
   ) { }
 
   ngOnInit() {
+    let item = JSON.parse(sessionStorage.getItem('form'));
+    this.headName = item.name + ' ' + item.lname;
   }
 
   save() {

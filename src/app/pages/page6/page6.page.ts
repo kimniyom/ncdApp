@@ -8,12 +8,15 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   styleUrls: ['./page6.page.scss'],
 })
 export class Page6Page implements OnInit {
+  headName;
   exercise;
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() {
+    let item = JSON.parse(sessionStorage.getItem('form'));
+    this.headName = item.name + ' ' + item.lname;
   }
 
   save() {

@@ -8,6 +8,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   styleUrls: ['./page7.page.scss'],
 })
 export class Page7Page implements OnInit {
+  headName;
   sweet;
   salty;
   creamy;
@@ -22,6 +23,8 @@ export class Page7Page implements OnInit {
     this.salty = 0;
     this.creamy = 0;
     this.nonselect = 0;
+    let item = JSON.parse(sessionStorage.getItem('form'));
+    this.headName = item.name + ' ' + item.lname;
   }
 
   save() {

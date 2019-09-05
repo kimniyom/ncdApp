@@ -9,6 +9,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   styleUrls: ['./page3.page.scss'],
 })
 export class Page3Page implements OnInit {
+  headName;
   service;
   flag;
   question: boolean = false;
@@ -28,6 +29,9 @@ export class Page3Page implements OnInit {
           this.question = false;
         }
       });
+
+    let item = JSON.parse(sessionStorage.getItem('form'));
+    this.headName = item.name + ' ' + item.lname;
   }
 
   save() {

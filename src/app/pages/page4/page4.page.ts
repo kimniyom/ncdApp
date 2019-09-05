@@ -8,6 +8,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   styleUrls: ['./page4.page.scss'],
 })
 export class Page4Page implements OnInit {
+  headName;
   smokes;
   amountday;
   pack;
@@ -24,6 +25,9 @@ export class Page4Page implements OnInit {
     this.showSmoke = false;
     this.showCancel = false;
     this.smokes = "";
+
+    let item = JSON.parse(sessionStorage.getItem('form'));
+    this.headName = item.name + ' ' + item.lname;
   }
 
   save() {
