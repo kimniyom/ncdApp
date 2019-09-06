@@ -45,7 +45,7 @@ export class Group2Page implements OnInit {
   }
 
   save(){
-  	if(!this.weight || !this.height || !this.bmi || !this.bp_s1_start || !this.bp_s1_end || !this.bp_s2_start || !this.bp_s2_end || !this.bp_avg_start || !this.bp_avg_end){
+  	if(!this.weight || !this.height || !this.bp_s1_start || !this.bp_s1_end || !this.bp_s2_start || !this.bp_s2_end){
       this.Alert("กรอกข้อมูลไม่ครบ...");
       return false;
     }
@@ -55,19 +55,21 @@ export class Group2Page implements OnInit {
     	return false;
     }
 
+    this.calculatorBmi();
+    this.avgBp();
     let data = {
     	weight: this.weight,
-		height: this.height,
-		bmi: this.bmi,
-		bp_s1_start: this.bp_s1_start,//BP ครั้งที่ 1
-		bp_s1_end: this.bp_s1_end,//BP ครั้งที่ 1
-		bp_s2_start: this.bp_s2_start,//BP ครั้งที่ 2
-		bp_s2_end: this.bp_s2_end,//BP ครั้งที่ 2
-		bp_avg_start: this.bp_avg_start,//BP เฉลี่ย
-		bp_avg_end: this.bp_avg_end,//BP เฉลี่ย
-		fbs: this.fbs,
-		sugar: this.sugar,
-		food: this.food
+  		height: this.height,
+  		bmi: this.bmi,
+  		bp_s1_start: this.bp_s1_start,//BP ครั้งที่ 1
+  		bp_s1_end: this.bp_s1_end,//BP ครั้งที่ 1
+  		bp_s2_start: this.bp_s2_start,//BP ครั้งที่ 2
+  		bp_s2_end: this.bp_s2_end,//BP ครั้งที่ 2
+  		bp_avg_start: this.bp_avg_start,//BP เฉลี่ย
+  		bp_avg_end: this.bp_avg_end,//BP เฉลี่ย
+  		fbs: this.fbs,
+  		sugar: this.sugar,
+  		food: this.food
     }
     sessionStorage.setItem("lastform",JSON.stringify(data));
     this.router.navigateByUrl('/lastform');
@@ -106,11 +108,29 @@ changSugarPost(){
   calculatorBmi(){
   	let w = this.weight;
   	let h = this.height;
-  	let m = (h / 100);
-  	let m_bmi = (m * 2);
-  	let bmi = (w / m_bmi);
-  	alert(h + "CM = " + m + "M");
-  	this.bmi = bmi;
+  	let m = (h / 100);//หาความสูงเป็นเมตร
+  	let h_bmi = (m * m);//นำมายกกำลัง 2
+  	let bmi = (w / h_bmi);//น้ำหนักหารส่วนสูง
+  	let bmiformat = this.currencyFormat(bmi);
+  	this.bmi = bmiformat;
+    //console.log('ความสูง = ' + h + ' น้ำหนัก = ' + w + ' ความสูงเมตร = ' + m + 'bmi => ' + bmi + ' bmiformat => ' + bmiformat);
+  }
+
+  currencyFormat(num) {
+    return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+  }
+
+  avgBp(){
+    let bp_s1_start = this.bp_s1_start;
+    let bp_s2_start = this.bp_s2_start;
+    let bp_s1_end = this.bp_s1_end;
+    let bp_s2_end = this.bp_s2_end;
+
+    let avgbpstart = (bp_s1_start + bp_s2_start);
+    let avgbpend = (bp_s1_end + bp_s2_end);
+
+    this.bp_avg_start = (avgbpstart / 2);
+    this.bp_avg_end = (avgbpend / 2);
   }
 
 }
