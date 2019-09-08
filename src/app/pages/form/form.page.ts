@@ -14,6 +14,8 @@ export class FormPage implements OnInit {
   lname;
   sex;
   privilege;
+
+
   constructor(
     private router: Router,
     private alert: AlertController
@@ -27,7 +29,7 @@ export class FormPage implements OnInit {
     const alert = await this.alert.create({
       header: '!แจ้งเตือน',
       subHeader: text,
-      //message: text,
+      //message: text,,
       buttons: ['OK']
     });
 
@@ -35,9 +37,14 @@ export class FormPage implements OnInit {
   }
 
   save() {
+    let cid = this.cid;
     if (!this.sex || !this.cid || !this.name || !this.lname || !this.privilege) {
       //alert("กรอกข้อมูลไม่ครบ...");
       this.Alert("กรอกข้อมูลไม่ครบ...");
+      return false;
+    }
+    if(cid.length != 13){
+      this.Alert("เลขบัตรประชาชนต้อง 13 หลัก...");
       return false;
     }
 

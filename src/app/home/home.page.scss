@@ -1,0 +1,33 @@
+@font-face {
+    font-family: thaisanslite;
+    src: url('../../assets/thaisanslite/thaisanslite_r1.ttf') format('truetype');
+}
+
+.welcome-card ion-img {
+    max-height: 35vh;
+    overflow: hidden;
+}
+
+.bg-page {
+    background-color: #FFFFFF;
+}
+
+.text-content {
+    color: #FFFFFF;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-family: 'thaisanslite';
+    text-align: center;
+    font-size: 22px;
+    
+}
+
+.version {
+    color: #FFFFFF;
+    font-family: 'thaisanslite';
+    font-size: 16px;
+}
+
+.page-home-bg {
+    background: linear-gradient(to top, #1d80bb 0%, #fffee6 100%);
+}

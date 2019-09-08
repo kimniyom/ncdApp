@@ -25,19 +25,20 @@
 </ion-toolbar>
 
 <ion-content padding>
+    <img src="/assets/img/805-bg.png"/>
     <ion-list>
         <ion-label class="headmenu">ผู้รับการตรวจ</ion-label>
         <ion-item>
             <ion-label position="stacked" class="textboxlabel">สิทธิ*</ion-label>
-            <ion-select [(ngModel)]="privilege" class="font-th" okText="ตกลง" cancelText="ยกเลิก">
-                <ion-select-option value="1" class="font-th">ผู้ประกันตน</ion-select-option>
-                <ion-select-option value="2" class="font-th">ข้าราชการ</ion-select-option>
-                <ion-select-option value="3" class="font-th">สิทธิหลักประกันสุขภาพถ้วนหน้า</ion-select-option>
+            <ion-select [(ngModel)]="privilege" okText="ตกลง" cancelText="ยกเลิก">
+                <ion-select-option value="1">ผู้ประกันตน</ion-select-option>
+                <ion-select-option value="2">ข้าราชการ</ion-select-option>
+                <ion-select-option value="3">สิทธิหลักประกันสุขภาพถ้วนหน้า</ion-select-option>
             </ion-select>
         </ion-item>
         <ion-item>
             <ion-label position="stacked" class="textboxlabel">เลขที่บัตรประชาชน*</ion-label>
-            <ion-input [(ngModel)]="cid" maxlength="13" type="number" pattern="[0-9]*" class="textbox"></ion-input>
+            <ion-input type="text" maxlength="13" pattern="(^0)([1-9]){8}([0-9])$"  [(ngModel)]="cid" class="textbox"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label position="stacked" class="textboxlabel">ชื่อ*</ion-label>
