@@ -30,23 +30,23 @@
     </div>
     <ion-label class="textboxlabel" style="color:#ffffff;">ผู้รับการตรวจ</ion-label>
     <ion-list style="border-radius: 10px; margin-bottom: 10px; padding-top: 10px;">
-        <ion-item id="rounded">
+        <ion-item>
             <ion-label position="stacked" class="textboxlabel">สิทธิ*</ion-label>
-            <ion-select [(ngModel)]="privilege" okText="ตกลง" cancelText="ยกเลิก">
-                <ion-select-option value="1">ผู้ประกันตน</ion-select-option>
-                <ion-select-option value="2">ข้าราชการ</ion-select-option>
-                <ion-select-option value="3">สิทธิหลักประกันสุขภาพถ้วนหน้า</ion-select-option>
+            <ion-select [(ngModel)]="privilege" class="textbox" okText="ตกลง" cancelText="ยกเลิก">
+                <ion-select-option value="1" class="textbox">ผู้ประกันตน</ion-select-option>
+                <ion-select-option value="2" class="textbox">ข้าราชการ</ion-select-option>
+                <ion-select-option value="3" class="textbox">สิทธิหลักประกันสุขภาพถ้วนหน้า</ion-select-option>
             </ion-select>
         </ion-item>
-        <ion-item id="rounded">
+        <ion-item>
             <ion-label position="stacked" class="textboxlabel">เลขที่บัตรประชาชน*</ion-label>
             <ion-input type="text" maxlength="13" pattern="(^0)([1-9]){8}([0-9])$" [(ngModel)]="cid" class="textbox"></ion-input>
         </ion-item>
-        <ion-item id="rounded">
+        <ion-item>
             <ion-label position="stacked" class="textboxlabel">ชื่อ*</ion-label>
             <ion-input class="textbox" [(ngModel)]="name"></ion-input>
         </ion-item>
-        <ion-item id="rounded">
+        <ion-item>
             <ion-label position="stacked" class="textboxlabel">สกุล*</ion-label>
             <ion-input class="textbox" [(ngModel)]="lname"></ion-input>
         </ion-item>
@@ -55,13 +55,13 @@
             <ion-list-header>
                 <ion-label class="textboxlabel">เพศ</ion-label>
             </ion-list-header>
-            <ion-item id="rounded">
+            <ion-item>
                 <ion-icon name="man" color="success"></ion-icon>
                 <ion-label class="textbox">ชาย</ion-label>
                 <ion-radio slot="start" value="M" name="sex"></ion-radio>
             </ion-item>
 
-            <ion-item id="rounded">
+            <ion-item>
                 <ion-icon name="woman" color="warning"></ion-icon>
                 <ion-label class="textbox">หญิง</ion-label>
                 <ion-radio slot="start" value="F" name="sex"></ion-radio>

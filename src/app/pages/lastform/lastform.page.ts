@@ -19,6 +19,70 @@ export class LastformPage implements OnInit {
   ht;
   bp_avg_start;
   bp_avg_end;
+  //Fields Databases
+  cid; 
+  name;  
+  lname;  
+  sex;  
+  privilege;  
+  mom_dm;  
+  mom_ht;  
+  mom_gout;  
+  mom_crf;  
+  mom_mi; 
+  mom_stroke;  
+  mom_copd;  
+  mom_none;  
+  mom_etc;  
+  b_dm;  
+  b_ht;  
+  b_gout;  
+  b_crf;  
+  b_mi;  
+  b_stroke;  
+  b_copd; 
+  b_none; 
+  b_etc; 
+  me_dm; 
+  me_ht; 
+  me_cirrhosis; 
+  me_paralysis; 
+  me_heart; 
+  me_dyslipidemia; 
+  me_foot; 
+  me_confined; 
+  me_water; 
+  me_urine; 
+  me_eat; 
+  me_weight_loss; 
+  me_lesion_mouth; 
+  me_skin; 
+  me_eye; 
+  me_seared_foot_hand; 
+  service; 
+  smokes; 
+  amountday; 
+  pack; 
+  typesmoke; 
+  typesmokeold; 
+  amountyear; 
+  drink; 
+  amountdrinkweek; 
+  exercise; 
+  sweet; 
+  salty; 
+  creamy; 
+  nonselect; 
+  height; 
+  weight; 
+  bp_s1_start; 
+  bp_s1_end; 
+  bp_s2_start; 
+  bp_s2_end;  
+  fbs; 
+  sugar; 
+  food; 
+  token; 
   constructor(
   	private router: Router,
     private http: Http,
@@ -151,6 +215,77 @@ export class LastformPage implements OnInit {
       return 'สงสัยรายใหม่';
     } else {
       return 'ประมวลผมไม่ได้';
+    }
+  }
+
+  save(){
+    let data = {
+    cid:this.cid,
+    name: this.name, 
+    lname: this.lname, 
+    sex: this.sex, 
+    privilege: this.privilege, 
+    mom_dm: this.mom_dm, 
+    mom_ht: this.mom_ht, 
+    mom_gout: this.mom_gout, 
+    mom_crf: this.mom_crf, 
+    mom_mi: this.mom_mi,
+    mom_stroke: this.mom_stroke, 
+    mom_copd: this.mom_copd, 
+    mom_none: this.mom_none, 
+    mom_etc: this.mom_etc, 
+    b_dm: this.b_dm, 
+    b_ht: this.b_ht, 
+    b_gout: this.b_gout, 
+    b_crf: this.b_crf, 
+    b_mi: this.b_mi, 
+    b_stroke: this.b_stroke, 
+    b_copd: this.b_copd,
+    b_none: this.b_none,
+    b_etc: this.b_etc,
+    me_dm: this.me_dm,
+    me_ht: this.me_ht,
+    me_cirrhosis: this.me_cirrhosis,
+    me_paralysis: this.me_paralysis,
+    me_heart: this.me_heart,
+    me_dyslipidemia: this.me_dyslipidemia,
+    me_foot: this.me_foot,
+    me_confined: this.me_confined,
+    me_water: this.me_water,
+    me_urine: this.me_urine,
+    me_eat: this.me_eat,
+    me_weight_loss: this.me_weight_loss,
+    me_lesion_mouth: this.me_lesion_mouth,
+    me_skin: this.me_skin,
+    me_eye: this.me_eye,
+    me_seared_foot_hand: this.me_seared_foot_hand,
+    service: this.service,
+    smokes: this.smokes,
+    amountday: this.amountday,
+    pack: this.pack,
+    typesmoke: this.typesmoke,
+    typesmokeold: this.typesmokeold,
+    amountyear: this.amountyear,
+    drink: this.drink,
+    amountdrinkweek: this.amountdrinkweek,
+    exercise: this.exercise,
+    sweet: this.sweet,
+    salty: this.salty,
+    creamy: this.creamy,
+    nonselect: this.nonselect,
+    height: this.height,
+    weight: this.weight,
+    bmi: this.bmi,
+    bp_s1_start: this.bp_s1_start,
+    bp_s1_end: this.bp_s1_end,
+    bp_s2_start: this.bp_s2_start,
+    bp_s2_end: this.bp_s2_end,
+    bp_avg_start: this.bp_avg_start,
+    bp_avg_end: this.bp_avg_end,
+    fbs: this.fbs,
+    sugar: this.sugar,
+    food: this.food,
+    token: this.token
     }
   }
 
