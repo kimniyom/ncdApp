@@ -13,22 +13,24 @@
         </ion-toolbar>
     </ion-header>
 -->
-<ion-toolbar color="green">
-    <ion-card class="bg-head">
+
+
+
+
+<ion-content padding>
+    <ion-card style="background: #ffffff;">
         <ion-card-header style="padding:10px; padding-top:20px;">
-            <ion-card-title class="text-color" style="text-align: center;">
-                แบบคัดกรองเบาหวานและความดันโลหิต<br />
-                ในประชากรอายุ 35 ปี
+            <ion-card-title class="textboxlabel" style="text-align: center;">
+                แบบคัดกรองเบาหวานและความดันโลหิต<br /> ในประชากรอายุ 35 ปี
             </ion-card-title>
         </ion-card-header>
     </ion-card>
-</ion-toolbar>
-
-<ion-content padding>
-    <img src="/assets/img/805-bg.png"/>
-    <ion-list>
-        <ion-label class="headmenu">ผู้รับการตรวจ</ion-label>
-        <ion-item>
+    <div style="text-align: center;">
+        <img src="/assets/img/img-home.png" />
+    </div>
+    <ion-label class="textboxlabel" style="color:#ffffff;">ผู้รับการตรวจ</ion-label>
+    <ion-list style="border-radius: 10px; margin-bottom: 10px; padding-top: 10px;">
+        <ion-item id="rounded">
             <ion-label position="stacked" class="textboxlabel">สิทธิ*</ion-label>
             <ion-select [(ngModel)]="privilege" okText="ตกลง" cancelText="ยกเลิก">
                 <ion-select-option value="1">ผู้ประกันตน</ion-select-option>
@@ -36,15 +38,15 @@
                 <ion-select-option value="3">สิทธิหลักประกันสุขภาพถ้วนหน้า</ion-select-option>
             </ion-select>
         </ion-item>
-        <ion-item>
+        <ion-item id="rounded">
             <ion-label position="stacked" class="textboxlabel">เลขที่บัตรประชาชน*</ion-label>
-            <ion-input type="text" maxlength="13" pattern="(^0)([1-9]){8}([0-9])$"  [(ngModel)]="cid" class="textbox"></ion-input>
+            <ion-input type="text" maxlength="13" pattern="(^0)([1-9]){8}([0-9])$" [(ngModel)]="cid" class="textbox"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item id="rounded">
             <ion-label position="stacked" class="textboxlabel">ชื่อ*</ion-label>
             <ion-input class="textbox" [(ngModel)]="name"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item id="rounded">
             <ion-label position="stacked" class="textboxlabel">สกุล*</ion-label>
             <ion-input class="textbox" [(ngModel)]="lname"></ion-input>
         </ion-item>
@@ -53,19 +55,20 @@
             <ion-list-header>
                 <ion-label class="textboxlabel">เพศ</ion-label>
             </ion-list-header>
-            <ion-item>
+            <ion-item id="rounded">
+                <ion-icon name="man" color="success"></ion-icon>
                 <ion-label class="textbox">ชาย</ion-label>
                 <ion-radio slot="start" value="M" name="sex"></ion-radio>
             </ion-item>
 
-            <ion-item>
+            <ion-item id="rounded">
+                <ion-icon name="woman" color="warning"></ion-icon>
                 <ion-label class="textbox">หญิง</ion-label>
                 <ion-radio slot="start" value="F" name="sex"></ion-radio>
             </ion-item>
         </ion-radio-group>
 
     </ion-list>
-
 
 </ion-content>
 
@@ -85,13 +88,14 @@
     </ion-toolbar>
 </ion-footer>
 -->
+
 <ion-footer no-border>
     <ion-toolbar>
         <ion-tabs>
             <ion-tab-bar slot="bottom">
                 <ion-tab-button routerLink="/">
-                    <ion-icon name="home"></ion-icon>
-                    <ion-label>Home</ion-label>
+                    <ion-icon name="home" color="dark"></ion-icon>
+                    <ion-label>หน้าหลัก</ion-label>
                 </ion-tab-button>
                 <!--
                 <ion-tab-button tab="tab2">
@@ -100,8 +104,8 @@
                 </ion-tab-button>
                 -->
                 <ion-tab-button (click)="save()">
-                    <ion-icon name="arrow-round-forward"></ion-icon>
-                    <ion-label>Next</ion-label>
+                    <ion-icon name="save" color="dark"></ion-icon>
+                    <ion-label>บันทึก</ion-label>
                 </ion-tab-button>
             </ion-tab-bar>
         </ion-tabs>
