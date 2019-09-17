@@ -40,35 +40,52 @@
         </ion-item>
         <ion-item>
             <ion-label position="stacked" class="textboxlabel">เลขที่บัตรประชาชน*</ion-label>
-            <ion-input type="text" maxlength="13" pattern="(^0)([1-9]){8}([0-9])$" [(ngModel)]="cid" class="textbox"></ion-input>
+            <ion-input type="password" maxlength="13" pattern="(^0)([1-9]){8}([0-9])$" [(ngModel)]="cid" class="textbox"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-label position="stacked" class="textboxlabel">ชื่อ*</ion-label>
-            <ion-input class="textbox" [(ngModel)]="name"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="stacked" class="textboxlabel">สกุล*</ion-label>
-            <ion-input class="textbox" [(ngModel)]="lname"></ion-input>
-        </ion-item>
-
-        <ion-radio-group [(ngModel)]="sex">
-            <ion-list-header>
-                <ion-label class="textboxlabel">เพศ</ion-label>
-            </ion-list-header>
-            <ion-item>
-                <ion-icon name="man" color="success"></ion-icon>
-                <ion-label class="textbox">ชาย</ion-label>
-                <ion-radio slot="start" value="M" name="sex"></ion-radio>
-            </ion-item>
-
-            <ion-item>
-                <ion-icon name="woman" color="warning"></ion-icon>
-                <ion-label class="textbox">หญิง</ion-label>
-                <ion-radio slot="start" value="F" name="sex"></ion-radio>
-            </ion-item>
-        </ion-radio-group>
-
     </ion-list>
+    <div style="text-align: center; margin-bottom: 10px;">
+        <ion-button class="textboxlabel" color="success" (click)="checkCid()">ตรวจสอบข้อมูล</ion-button>
+    </div>
+
+    <div *ngIf="showTrue == true">
+        <ion-list style="border-radius: 10px; margin-bottom: 10px; padding-top: 10px;">
+            <ion-item>
+                <ion-label position="stacked" class="textboxlabel">ชื่อ*</ion-label>
+                <ion-input class="textbox" [(ngModel)]="name" readonly="readonly"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked" class="textboxlabel">สกุล*</ion-label>
+                <ion-input class="textbox" [(ngModel)]="lname" readonly="readonly"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked" class="textboxlabel">รอบเอว*</ion-label>
+                <ion-input class="textbox" pattern="(^0)([1-9]){8}([0-9])$" [(ngModel)]="waistline"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="stacked" class="textboxlabel">อายุ</ion-label>
+                <ion-input class="textbox" [(ngModel)]="age" readonly="readonly"></ion-input>
+            </ion-item>
+            <ion-radio-group [(ngModel)]="sex">
+                <ion-list-header>
+                    <ion-label class="textboxlabel">เพศ</ion-label>
+                </ion-list-header>
+                <ion-item>
+                    <ion-icon name="man" color="success"></ion-icon>
+                    <ion-label class="textbox">ชาย</ion-label>
+                    <ion-radio slot="start" value="M" name="sex" disabled></ion-radio>
+                </ion-item>
+
+                <ion-item>
+                    <ion-icon name="woman" color="warning"></ion-icon>
+                    <ion-label class="textbox">หญิง</ion-label>
+                    <ion-radio slot="start" value="F" name="sex" disabled></ion-radio>
+                </ion-item>
+            </ion-radio-group>
+
+        </ion-list>
+    </div>
+
 
 </ion-content>
 
