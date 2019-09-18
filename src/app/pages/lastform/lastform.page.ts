@@ -82,6 +82,7 @@ export class LastformPage implements OnInit {
   fbs; 
   sugar; 
   food; 
+  waistline;
   token; 
   constructor(
   	private router: Router,
@@ -104,12 +105,12 @@ export class LastformPage implements OnInit {
     let lastform = JSON.parse(sessionStorage.getItem('lastform'));
     this.bmiValue = this.getValueBmi(lastform.bmi);
     this.bmi = lastform.bmi;
+    this.waistline = lastform.waistline;
   }
 
   currencyFormat(num) {
     return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   }
-
 
   getValueBmi(bmi){
     if(bmi < 18.5){
@@ -218,6 +219,8 @@ export class LastformPage implements OnInit {
     }
   }
 
+
+
   save(){
     let data = {
     cid:this.cid,
@@ -285,6 +288,7 @@ export class LastformPage implements OnInit {
     fbs: this.fbs,
     sugar: this.sugar,
     food: this.food,
+    waistline: this.waistline,
     token: this.token
     }
   }

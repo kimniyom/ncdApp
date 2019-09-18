@@ -14,7 +14,11 @@ const routes: Routes = [
   { path: 'page7', loadChildren: './pages/page7/page7.module#Page7PageModule' },
   { path: 'group2', loadChildren: './pages/group2/group2.module#Group2PageModule' },
   { path: 'lastform', loadChildren: './pages/lastform/lastform.module#LastformPageModule' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' }
+  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: 'page8', loadChildren: './pages/page8/page8.module#Page8PageModule' },
+  { path: 'page9', loadChildren: './pages/page9/page9.module#Page9PageModule' },
+  { path: 'page10', loadChildren: './pages/page10/page10.module#Page10PageModule' },
+  { path: 'page11', loadChildren: './pages/page11/page11.module#Page11PageModule' }
 
 ];
 @NgModule({

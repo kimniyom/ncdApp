@@ -22,6 +22,7 @@ export class Group2Page implements OnInit {
 	fbs;
 	sugar;
 	food;
+	waistline;
 	showfbs: boolean = true;
 	showsugar: boolean = true;
   constructor(
@@ -45,7 +46,7 @@ export class Group2Page implements OnInit {
   }
 
   save(){
-  	if(!this.weight || !this.height || !this.bp_s1_start || !this.bp_s1_end || !this.bp_s2_start || !this.bp_s2_end){
+  	if(!this.weight || !this.height || !this.bp_s1_start || !this.bp_s1_end || !this.bp_s2_start || !this.bp_s2_end || !this.waistline){
       this.Alert("กรอกข้อมูลไม่ครบ...");
       return false;
     }
@@ -69,7 +70,8 @@ export class Group2Page implements OnInit {
   		bp_avg_end: this.bp_avg_end,//BP เฉลี่ย
   		fbs: this.fbs,
   		sugar: this.sugar,
-  		food: this.food
+		food: this.food,
+		waistline: this.waistline
     }
     sessionStorage.setItem("lastform",JSON.stringify(data));
     this.router.navigateByUrl('/lastform');
@@ -80,13 +82,15 @@ export class Group2Page implements OnInit {
   		this.showsugar = false;
   		this.showfbs = true;
   		this.food = "";
-  		this.sugar = "";
+		this.sugar = "";
+		this.waistline = "";
   	} else {
   		this.fbs = "";
   		this.sugar = "";
   		this.showsugar = true;
   		this.showfbs = true;
-  		this.food = "";
+		this.food = "";
+		this.waistline = "";
   	}
   }
 

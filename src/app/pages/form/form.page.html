@@ -13,10 +13,6 @@
         </ion-toolbar>
     </ion-header>
 -->
-
-
-
-
 <ion-content padding>
     <ion-card style="background: #ffffff;">
         <ion-card-header style="padding:10px; padding-top:20px;">
@@ -57,10 +53,7 @@
                 <ion-label position="stacked" class="textboxlabel">สกุล*</ion-label>
                 <ion-input class="textbox" [(ngModel)]="lname" readonly="readonly"></ion-input>
             </ion-item>
-            <ion-item>
-                <ion-label position="stacked" class="textboxlabel">รอบเอว*</ion-label>
-                <ion-input class="textbox" pattern="(^0)([1-9]){8}([0-9])$" [(ngModel)]="waistline"></ion-input>
-            </ion-item>
+
 
             <ion-item>
                 <ion-label position="stacked" class="textboxlabel">อายุ</ion-label>
@@ -82,11 +75,8 @@
                     <ion-radio slot="start" value="F" name="sex" disabled></ion-radio>
                 </ion-item>
             </ion-radio-group>
-
         </ion-list>
     </div>
-
-
 </ion-content>
 
 <!--

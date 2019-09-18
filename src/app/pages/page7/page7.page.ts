@@ -68,7 +68,7 @@ export class Page7Page implements OnInit {
       nonselect: nonselect
     }
     sessionStorage.setItem("page7",JSON.stringify(data));
-    this.router.navigateByUrl('/group2');
+    this.router.navigateByUrl('/page8');
   }
 
   getFood(){

@@ -9,30 +9,25 @@
 
 <ion-card class="bg-head">
     <ion-card-header style="padding:10px;">
-        <ion-card-title class="text-color">7. ท่านชอบอาหารรสใด (ตอบได้มากกว่า 1 ข้อ)</ion-card-title>
+        <ion-card-title class="text-color">11. ในรอบ 12 เดือน ที่ผ่านมา นักเรียนเคยประสบอุบัติเหตุจราจรได้รับบาดเจ็บ ต้องไปรักษาที่ สถานพยาบาลหรือไม่</ion-card-title>
     </ion-card-header>
 </ion-card>
 
 <ion-content class="content">
-    <ion-item-group padding>
+    <ion-radio-group [(ngModel)]="accident" style="margin-top:0px;">
         <ion-item>
-            <ion-checkbox color="primary" [(ngModel)]="sweet" (ionChange)="getFood()" [checked]="1"></ion-checkbox>
-            <div class="font-th"> 7.1 หวาน</div>
+            <ion-radio color="success" value="1"></ion-radio>
+            <div class="font-th"> เคย</div>
         </ion-item>
         <ion-item>
-            <ion-checkbox color="primary" [(ngModel)]="salty" (ionChange)="getFood()" [checked]="1"></ion-checkbox>
-            <div class="font-th"> 7.2 เค็ม</div>
+            <ion-radio color="danger" value="2"></ion-radio>
+            <div class="font-th"> ไม่เคย</div>
         </ion-item>
         <ion-item>
-            <ion-checkbox color="primary" [(ngModel)]="creamy" (ionChange)="getFood()" [checked]="1"></ion-checkbox>
-            <div class="font-th"> 7.3 มัน</div>
+            <ion-radio color="warning" value="3"></ion-radio>
+            <div class="font-th"> ไม่แน่ใจ/จำไม่ได้</div>
         </ion-item>
-        <ion-item>
-            <ion-checkbox color="primary" [(ngModel)]="nonselect" (ionChange)="getFoodNon()" [checked]="1"></ion-checkbox>
-            <div class="font-th"> 7.4 ไม่ชอบทุกข้อ</div>
-        </ion-item>
-    </ion-item-group>
-
+    </ion-radio-group>
 </ion-content>
 
 <ion-footer no-border>

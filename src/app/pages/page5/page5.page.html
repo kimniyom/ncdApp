@@ -9,35 +9,35 @@
 
 
 <ion-card class="bg-head">
-  <ion-card-header style="padding:10px;">
-      <ion-card-title class="text-color">5. ท่านดื่มเครื่องดื่มที่มีแอลกอฮอล์ หรือไม่</ion-card-title>
-  </ion-card-header>
+    <ion-card-header style="padding:10px;">
+        <ion-card-title class="text-color">5. ท่านดื่มเครื่องดื่มที่มีแอลกอฮอล์ หรือไม่</ion-card-title>
+    </ion-card-header>
 </ion-card>
 
 <ion-content class="content">
-  <ion-radio-group [(ngModel)]="drink" (ionChange)="getDrink()" style="margin-top:0px;">
-      <ion-item>
-          <ion-radio color="primary" value="1"></ion-radio>
-          <div class="font-th"> 5.1 ดื่ม</div>
-      </ion-item>
-      <ion-item>
-          <ion-radio color="primary" value="2"></ion-radio>
-          <div class="font-th"> 5.2 ไม่ดื่ม</div>
-      </ion-item>
-      <ion-item>
-          <ion-radio color="primary" value="3"></ion-radio>
-          <div class="font-th"> 5.3 เคยดื่มแต่เลิกแล้ว</div>
-      </ion-item>
-  </ion-radio-group>
-  <div padding *ngIf="showDrink == true">
-      <div class="font-th" style="color: red;">
-          *กรุณากรอก
-      </div>
-      <div class="font-th" style="font-size: 16px;">กี่ครั้ง/สัปดาห์ (ดื่มเหล้า มากกว่า 45 ซีซี ต่อวัน / ดื่มเบียร์ มากกว่า 240 ซีซี ต่อวัน / ดื่มไวน์ มากกว่า 120 ซีซี ต่อวัน) *</div>
-      <ion-item>
-          <ion-input class="font-th" type="number" [(ngModel)]="amountdrinkweek"></ion-input>
-      </ion-item>
-  </div>
+    <ion-radio-group [(ngModel)]="drink" (ionChange)="getDrink()" style="margin-top:0px;">
+        <ion-item>
+            <ion-radio color="primary" value="1"></ion-radio>
+            <div class="font-th"> 5.1 ดื่ม</div>
+        </ion-item>
+        <ion-item>
+            <ion-radio color="primary" value="2"></ion-radio>
+            <div class="font-th"> 5.2 ไม่ดื่ม</div>
+        </ion-item>
+        <ion-item>
+            <ion-radio color="primary" value="3"></ion-radio>
+            <div class="font-th"> 5.3 เคยดื่มแต่เลิกแล้ว</div>
+        </ion-item>
+    </ion-radio-group>
+    <div padding *ngIf="showDrink == true">
+        <div class="font-th" style="color: red;">
+            *กรุณากรอก
+        </div>
+        <div class="font-th" style="font-size: 16px;">กี่ครั้ง/สัปดาห์ (ดื่มเหล้า มากกว่า 45 ซีซี ต่อวัน / ดื่มเบียร์ มากกว่า 240 ซีซี ต่อวัน / ดื่มไวน์ มากกว่า 120 ซีซี ต่อวัน) *</div>
+        <ion-item>
+            <ion-input class="font-th" type="number" [(ngModel)]="amountdrinkweek"></ion-input>
+        </ion-item>
+    </div>
 
 </ion-content>
 
@@ -45,14 +45,19 @@
     <ion-toolbar>
         <ion-tabs>
             <ion-tab-bar slot="bottom">
-                <ion-tab-button>
-                    <ion-icon name="home"></ion-icon>
-                    <ion-label>Home</ion-label>
+                <ion-tab-button routerLink="/">
+                    <ion-icon name="home" color="dark"></ion-icon>
+                    <ion-label>หน้าหลัก</ion-label>
                 </ion-tab-button>
-
+                <!--
+                <ion-tab-button tab="tab2">
+                    <ion-icon name="apps"></ion-icon>
+                    <ion-label>Tab Two</ion-label>
+                </ion-tab-button>
+                -->
                 <ion-tab-button (click)="save()">
-                    <ion-icon name="arrow-forward"></ion-icon>
-                    <ion-label>Next</ion-label>
+                    <ion-icon name="save" color="dark"></ion-icon>
+                    <ion-label>บันทึก</ion-label>
                 </ion-tab-button>
             </ion-tab-bar>
         </ion-tabs>

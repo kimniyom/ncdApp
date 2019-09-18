@@ -15,7 +15,6 @@ export class FormPage implements OnInit {
   sex;
   privilege;
   age;
-  waistline;
   showTrue: boolean = false;
   constructor(
     private router: Router,
@@ -75,11 +74,10 @@ export class FormPage implements OnInit {
   }
 
   save() {
-    if (!this.cid || !this.privilege || !this.name || !this.lname || !this.age || !this.sex || !this.waistline) {
+    if (!this.cid || !this.privilege || !this.name || !this.lname || !this.age || !this.sex) {
       this.Alert("กรอกข้อมูลไม่ครบ...");
       return false;
     }
-    
     
     let data = {
       cid: this.cid,
@@ -87,8 +85,7 @@ export class FormPage implements OnInit {
       name: this.name,
       lname: this.lname,
       age: this.age,
-      privilege: this.privilege,
-      waistline: this.waistline
+      privilege: this.privilege
     }
     //console.log(data);
     sessionStorage.setItem("form", JSON.stringify(data));
