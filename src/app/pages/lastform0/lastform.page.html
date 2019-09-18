@@ -1,0 +1,122 @@
+
+<ion-header no-border>
+  <ion-toolbar color="blue">
+    <ion-title style="text-align:center; color: #ffffff;" class="font-th">
+    สรุปผล {{ headName }}
+</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="lastmenu">
+    <ion-card-content style="text-align: center;">
+      <h1 class="headmenu">โรคเบาหวาน</h1>
+       <h2 class="headmenuvalue">ผล {{ dmValue }}</h2>
+    </ion-card-content>
+  </ion-card>
+
+   <ion-card class="lastmenu">
+    <ion-card-content style="text-align: center;">
+      <h1 class="headmenu">โรคความดันโลหิตสูง {{ bp_avg_start }} / {{ bp_avg_end }}</h1>
+       <h2 class="headmenuvalue">ผล {{ ht }}</h2>
+    </ion-card-content>
+  </ion-card>
+
+   <ion-card class="lastmenu">
+    <ion-card-content style="text-align: center;">
+      <h1 class="headmenu">ผลการประเมิน Stoke</h1>
+       <h2 class="headmenuvalue">ผล {{ strokeValue }}</h2>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="lastmenu">
+    <ion-card-content style="text-align: center;">
+      <h1 class="headmenu">ผลประเมินอัมพฤกษ์</h1>
+       <h2 class="headmenuvalue">ผล {{ paralysis }}</h2>
+    </ion-card-content>
+  </ion-card>
+
+   <ion-card class="lastmenu">
+    <ion-card-content style="text-align: center;">
+      <h1 class="headmenu">ผลประเมิน Obesity (อ้วน) {{ bmi }}</h1>
+       <h2 class="headmenuvalue">ผล {{ bmiValue }}</h2>
+    </ion-card-content>
+  </ion-card>
+
+
+<!--
+	<ion-list>
+		<ion-list-header class="headmenu">
+          สรุปผลการตรวจคัดกรองยืนยัน
+        </ion-list-header>
+
+        <ion-item>
+		  <ion-avatar slot="start" style="padding-top: 15px;">
+            <ion-icon name="checkmark-circle-outline" color="success"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h3>DM</h3>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+        	<ion-avatar slot="start" style="padding-top: 15px;">
+            <ion-icon name="remove" color="dark"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h3>HT</h3>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+        	<ion-avatar slot="start" style="padding-top: 15px;">
+           <ion-icon name="remove" color="dark"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h3>Stroke</h3>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+        	<ion-avatar slot="start" style="padding-top: 15px;">
+           <ion-icon name="checkmark-circle-outline" color="success"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h3>Obesity</h3>
+          </ion-label>
+        </ion-item>
+
+        <ion-radio-group [(ngModel)]="contact">
+            <ion-list-header>
+            	<h3 class="headmenu">การดำเนินงาน</h3>
+          	</ion-list-header>
+            <ion-item>
+                <ion-label class="textbox">ให้คำแนะนำการดูแลตนเอง<br/>และตรวจคัดกรองซ้ำทุก 1 ปี</ion-label>
+                <ion-radio slot="start" value="1"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label class="textbox">ลงทะเบียนกลุ่มเสี่ยงต่อโรค Metabolic <br/>และแนะนำเข้าโครงการปรับเปลี่ยนพฤติกรรม</ion-label>
+                <ion-radio slot="start" value="2"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label class="textbox">ส่งต่อเพื่อรักษา</ion-label>
+                <ion-radio slot="start" value="3"></ion-radio>
+            </ion-item>
+        </ion-radio-group>
+	</ion-list>
+-->
+</ion-content>
+
+<ion-footer no-border>
+    <ion-toolbar>
+        <ion-tabs>
+            <ion-tab-bar slot="bottom">
+                <ion-button expand="block" fill="clear">
+					<ion-icon slot="start" name="save"></ion-icon>
+					บันทึกข้อมูล
+				</ion-button>
+
+            </ion-tab-bar>
+        </ion-tabs>
+    </ion-toolbar>
+</ion-footer>

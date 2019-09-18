@@ -1,50 +1,62 @@
-
 <ion-header no-border>
-  <ion-toolbar color="blue">
-    <ion-title style="text-align:center; color: #ffffff;" class="font-th">
-    สรุปผล {{ headName }}
-</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="blue">
+        <ion-title style="text-align:center; color: #ffffff;" class="font-th">
+            สรุปผล {{ headName }}
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card class="lastmenu">
-    <ion-card-content style="text-align: center;">
-      <h1 class="headmenu">โรคเบาหวาน</h1>
-       <h2 class="headmenuvalue">ผล {{ dmValue }}</h2>
-    </ion-card-content>
-  </ion-card>
+    <ion-card class="lastmenu">
+        <ion-card-content style="text-align: center;">
+            <h1 class="headmenu">โรคเบาหวาน</h1>
+            <h2 class="headmenuvalue">ผล {{ dmValue }}</h2>
+            <hr/>
+            <h3 style="color: red;">คำแนะนำ</h3>
+            <p class="headmenuvalue">{{ recommend }}</p>
+        </ion-card-content>
+    </ion-card>
 
-   <ion-card class="lastmenu">
-    <ion-card-content style="text-align: center;">
-      <h1 class="headmenu">โรคความดันโลหิตสูง {{ bp_avg_start }} / {{ bp_avg_end }}</h1>
-       <h2 class="headmenuvalue">ผล {{ ht }}</h2>
-    </ion-card-content>
-  </ion-card>
+    <ion-card class="lastmenu">
+        <ion-card-content style="text-align: center;">
+            <h1 class="headmenu">โรคความดันโลหิตสูง {{ bp_avg_start }} / {{ bp_avg_end }}</h1>
+            <h2 class="headmenuvalue">ผล {{ ht }}</h2>
+            <hr/>
+            <h3 style="color: red;">คำแนะนำ</h3>
+            <p class="headmenuvalue">{{ htRecommend }}</p>
+        </ion-card-content>
+    </ion-card>
 
-   <ion-card class="lastmenu">
-    <ion-card-content style="text-align: center;">
-      <h1 class="headmenu">ผลการประเมิน Stoke</h1>
-       <h2 class="headmenuvalue">ผล {{ strokeValue }}</h2>
-    </ion-card-content>
-  </ion-card>
+    <ion-card class="lastmenu">
+        <ion-card-content style="text-align: center;">
+            <h1 class="headmenu">ผลการประเมิน Stoke</h1>
+            <h2 class="headmenuvalue">ผล {{ strokeValue }}</h2>
+            <h3 style="color: red;">คำแนะนำ</h3>
+            <ion-img src="/assets/img/bmi.jpg"></ion-img>
+        </ion-card-content>
+    </ion-card>
 
-  <ion-card class="lastmenu">
-    <ion-card-content style="text-align: center;">
-      <h1 class="headmenu">ผลประเมินอัมพฤกษ์</h1>
-       <h2 class="headmenuvalue">ผล {{ paralysis }}</h2>
-    </ion-card-content>
-  </ion-card>
+    <ion-card class="lastmenu">
+        <ion-card-content style="text-align: center;">
+            <h1 class="headmenu">ผลประเมินอัมพฤกษ์</h1>
+            <h2 class="headmenuvalue">ผล {{ paralysis }}</h2>
+            <h3 style="color: red;">คำแนะนำ</h3>
+            <ion-img src="/assets/img/paralysis2.png"></ion-img><br/>
+            <ion-img src="/assets/img/paralysis.png"></ion-img>
+        </ion-card-content>
+    </ion-card>
 
-   <ion-card class="lastmenu">
-    <ion-card-content style="text-align: center;">
-      <h1 class="headmenu">ผลประเมิน Obesity (อ้วน) {{ bmi }}</h1>
-       <h2 class="headmenuvalue">ผล {{ bmiValue }}</h2>
-    </ion-card-content>
-  </ion-card>
+    <ion-card class="lastmenu">
+        <ion-card-content style="text-align: center;">
+            <h1 class="headmenu">ผลประเมิน Obesity (อ้วน) {{ bmi }}</h1>
+            <h2 class="headmenuvalue">ผล {{ bmiValue }}</h2>
+            <h3 style="color: red;">คำแนะนำ</h3>
+            <ion-img src="/assets/img/fat.jpg"></ion-img>
+        </ion-card-content>
+    </ion-card>
 
 
-<!--
+    <!--
 	<ion-list>
 		<ion-list-header class="headmenu">
           สรุปผลการตรวจคัดกรองยืนยัน
@@ -112,9 +124,9 @@
         <ion-tabs>
             <ion-tab-bar slot="bottom">
                 <ion-button expand="block" fill="clear">
-					<ion-icon slot="start" name="save"></ion-icon>
-					บันทึกข้อมูล
-				</ion-button>
+                    <ion-icon slot="start" name="save"></ion-icon>
+                    บันทึกข้อมูล
+                </ion-button>
 
             </ion-tab-bar>
         </ion-tabs>

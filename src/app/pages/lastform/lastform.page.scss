@@ -23,7 +23,7 @@
 .headmenu {
     font-family: 'thaisanslite';
     font-weight: bold;
-    color: cadetblue;
+    color: green;
     font-size: 20px;
 }
 
@@ -32,7 +32,6 @@
     color: #999999;
     font-size: 18px;
 }
-
 
 .subheadmenu {
     font-family: 'thaisanslite';
@@ -72,20 +71,19 @@
     font-size: 20px;
 }
 
-.bg-lastform{
-	--background: #eeeeee;
+.bg-lastform {
+    --background: #eeeeee;
 }
 
-h3{
+h3 {
     font-size: 16px;
     font-family: 'thaisanslite';
 }
 
-.lastmenu{
+.lastmenu {
     --background: #ffffff;
 }
 
 ion-content {
     --background: linear-gradient(to top, #ffffff 0%, #1d80bb 100%);
 }
-

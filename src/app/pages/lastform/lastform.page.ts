@@ -19,6 +19,7 @@ export class LastformPage implements OnInit {
   ht;
   bp_avg_start;
   bp_avg_end;
+  recommend;
   //Fields Databases
   cid; 
   name;  
@@ -82,8 +83,9 @@ export class LastformPage implements OnInit {
   fbs; 
   sugar; 
   food; 
-  waistline;
   token; 
+  //
+  htRecommend;
   constructor(
   	private router: Router,
     private http: Http,
@@ -94,23 +96,27 @@ export class LastformPage implements OnInit {
     this.statusBar.backgroundColorByHexString('#3880ff');
   	let item = JSON.parse(sessionStorage.getItem('form'));
     this.headName = item.name + ' ' + item.lname;
-    this.dmValue = this.getDmvalue();
+    let dmGroup = this.getDmvalue();
+    this.dmValue = dmGroup.group;
+    this.recommend = dmGroup.recommend;
     this.getDetail();
     this.strokeValue = this.getStroke();
     this.paralysis = this.getParalysis();
-    this.ht = this.getHtvalue();
+    let htGroup = this.getHtvalue();
+    this.ht = htGroup.group;
+    this.htRecommend = htGroup.recommend;
   }
 
   getDetail(){
     let lastform = JSON.parse(sessionStorage.getItem('lastform'));
     this.bmiValue = this.getValueBmi(lastform.bmi);
     this.bmi = lastform.bmi;
-    this.waistline = lastform.waistline;
   }
 
   currencyFormat(num) {
     return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   }
+
 
   getValueBmi(bmi){
     if(bmi < 18.5){
@@ -138,11 +144,11 @@ export class LastformPage implements OnInit {
     }
     this.dm = value;
     if(value < 100){
-      return 'กลุ่มปกติ';
+      return {group: 'กลุ่มปกติ',recommend:'ควรออกกำลังกายสม่ำเสมอ รักษาน้ำหนักตัว ตรวจตวามดันเลือด'};
     } else if(value >= 100 && value <= 125){
-      return 'กลุ่มเสี่ยงสูง';
+      return {group: 'กลุ่มเสี่ยงสูง',recommend:'ควรควบคุ้มอาหารและออกกำลังกายสม่ำเสมอ ควบคุมน้ำหนักตัว ตรวจตวามดันเลือดและตรวจน้ำตาลในเลือด'};
     } else if(value >= 126){
-      return 'กลุ่มสงสัยป่วยรายใหม่';
+      return {group: 'กลุ่มสงสัยป่วยรายใหม่',recommend:'แนะนำให้พบเจ้าหน้าที่เพื่อตรวจน้ำตาลในเลือดซ้ำ'};
     }
   }
 
@@ -209,17 +215,19 @@ export class LastformPage implements OnInit {
     this.bp_avg_end = bpend;
 
     if(bpstart < 120 && bpend > 80){
-      return 'กลุ่มปกติ(มีปัจจัยเสี่ยง)';
+      return {group: 'กลุ่มปกติ(มีปัจจัยเสี่ยง)',recommend:'ควรเช็คความดันโลหิตสม่ำเสมอ'};
     } else if((bpstart >= 120 && bpstart <= 139) && (bpend >= 80 && bpend <= 89 )){
-      return 'กลุ่มเสี่ยงสูง';
-    } else if(bpstart >= 140 && bpend >= 90){
-      return 'สงสัยรายใหม่';
+      return {group: 'สงสัยรายใหม่',recommend:'ปรึกษาแพทย์'};
+    } else if((bpstart >= 140 && bpstart <= 159) && (bpend >= 90 && bpend <= 99)){
+      return {group: 'กลุ่มเสี่ยงสูง',recommend:'พบแพทย์'};
+    } else if(bpstart >= 160 && bpend >= 100){
+      return {group: 'กลุ่มเสี่ยงสูงมาก',recommend:'พบแพทย์ด่วน'};
+    } else if(bpstart <= 120 && bpend <= 80){
+      return {group: 'กลุ่มปกติ',recommend:'ควรเช็คความดันโลหิตสม่ำเสมอ'};
     } else {
-      return 'ประมวลผมไม่ได้';
+      return {group: 'ไม่อยู่ในช่วงเงื่อนไข',recommend:'-'};
     }
   }
-
-
 
   save(){
     let data = {
@@ -288,7 +296,6 @@ export class LastformPage implements OnInit {
     fbs: this.fbs,
     sugar: this.sugar,
     food: this.food,
-    waistline: this.waistline,
     token: this.token
     }
   }
