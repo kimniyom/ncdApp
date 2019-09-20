@@ -24,6 +24,7 @@ import { from } from 'rxjs';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: 'API_URL', useValue: environment.apiUrl },
+    { provide: 'API_URL_NCD', useValue: environment.apiUrlNcd },
   ],
   bootstrap: [AppComponent]
 })

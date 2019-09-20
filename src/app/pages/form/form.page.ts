@@ -1,6 +1,6 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController,LoadingController } from '@ionic/angular';
 import { Platform, NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 @Component({
@@ -20,6 +20,7 @@ export class FormPage implements OnInit {
     private router: Router,
     private alert: AlertController,
     private http: Http,
+    public loadingController: LoadingController,
     @Inject('API_URL') private API_URL: string,
   ) { }
 
@@ -38,6 +39,18 @@ export class FormPage implements OnInit {
     await alert.present();
   }
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'กำลังตรวจสอบข้อมูล...',
+      //duration: 2000
+    });
+    await loading.present();
+
+    //const { role, data } = await loading.onDidDismiss();
+
+    //console.log('Loading dismissed!');
+  }
+
   checkCid(){
     let cid = this.cid;
     if (!this.cid || !this.privilege) {
@@ -50,16 +63,19 @@ export class FormPage implements OnInit {
       this.Alert("เลขบัตรประชาชนต้อง 13 หลัก...");
       return false;
     }
+    this.presentLoading();
+    this.http.post(this.API_URL + "/person/",{cid: cid}).subscribe(res => {
 
-    this.http.get(this.API_URL + "/person/" + cid).subscribe(res => {
       let data =  res.json();
       let person = data.rows[0][0];
       console.log(person);
       if(!person){
+        this.loadingController.dismiss();
         this.showTrue = false;
         this.Alert("ไม่พบข้อมูลในระบบจังหวัด...");
         return false;
       } else {
+        this.loadingController.dismiss();
         this.showTrue = true;
         this.name = person.NAME;
         this.lname = person.LNAME;
