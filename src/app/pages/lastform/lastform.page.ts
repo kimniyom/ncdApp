@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Platform, NavController } from 'ionic-angular';
+import { AlertController,LoadingController } from '@ionic/angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { StatusBar, } from '@ionic-native/status-bar/ngx';
 @Component({
   selector: 'app-lastform',
   templateUrl: './lastform.page.html',
   styleUrls: ['./lastform.page.scss'],
 })
 export class LastformPage implements OnInit {
+  isLoading = false;
+  loading;
   headName;
   bmiValue;
   dmValue;
@@ -83,19 +85,114 @@ export class LastformPage implements OnInit {
   fbs; 
   sugar; 
   food; 
+  waistline;
+  age;
   token; 
+  smoke;
+  motorcycle;
+  capmotorcycle;
+  drinkmotorcycle;
+  accident;
   //
   htRecommend;
   constructor(
   	private router: Router,
     private http: Http,
-    private statusBar: StatusBar
+    private alert: AlertController,
+    private loadingController: LoadingController,
+    private statusBar: StatusBar,
+    @Inject('API_URL_NCD') private API_URL_NCD: string,
     ) { }
+  
 
   ngOnInit() {
+    this.token = localStorage.getItem('token');
+
     this.statusBar.backgroundColorByHexString('#3880ff');
   	let item = JSON.parse(sessionStorage.getItem('form'));
     this.headName = item.name + ' ' + item.lname;
+    this.age = item.age;
+    this.cid = item.cid;
+    this.name = item.name;
+    this.lname = item.lname;
+    this.sex = item.sex;
+    this.age = item.age;
+    this.privilege = item.privilege;
+
+    let page1 = JSON.parse(sessionStorage.getItem('page1'));
+      this.mom_dm = page1.mom_dm;//เบาหวาน
+      this.mom_ht = page1.mom_ht;//ความดัน
+      this.mom_gout = page1.mom_gout;//เก้๊าท์
+      this.mom_crf = page1.mom_crf;//ไตวาย
+      this.mom_mi = page1.mom_mi;//กล้ามเนื้อหัวใจตาย
+      this.mom_stroke = page1.mom_stroke;//เส้นเลือกสมอง
+      this.mom_copd = page1.mom_copd;//ถุงลมพอง
+      this.mom_none = page1.mom_none;//ไม่ทราบ
+      this.mom_etc = page1.mom_etc;//อื่น ๆ
+      this.b_dm = page1.b_dm;//เบาหวาน
+      this.b_ht = page1.b_ht;//ความดัน
+      this.b_gout = page1.b_gout;//เก้๊าท์
+      this.b_crf = page1.b_crf;//ไตวาย
+      this.b_mi = page1.b_mi;//กล้ามเนื้อหัวใจตาย
+      this.b_stroke = page1.b_stroke;//เส้นเลือกสมอง
+      this.b_copd = page1.b_copd;//ถุงลมพอง
+      this.b_none = page1.b_none;//ไม่ทราบ
+      this.b_etc = page1.b_etc;//อื่น ๆ
+
+      let page2 = JSON.parse(sessionStorage.getItem('page2'));
+      this.me_dm = page2.me_dm;
+      this.me_ht = page2.me_ht;
+      this.me_cirrhosis = page2.me_cirrhosis;
+      this.me_paralysis = page2.me_paralysis;
+      this.me_heart = page2.me_heart;
+      this.me_dyslipidemia = page2.me_dyslipidemia;
+      this.me_foot = page2.me_foot;
+      this.me_confined = page2.me_confined;
+      this.me_water = page2.me_water;
+      this.me_urine = page2.me_urine;
+      this.me_eat = page2.me_eat;
+      this.me_weight_loss = page2.me_weight_loss;
+      this.me_lesion_mouth = page2.me_lesion_mouth;
+      this.me_skin = page2.me_skin;
+      this.me_eye = page2.me_eye;
+      this.me_seared_foot_hand = page2.me_seared_foot_hand;
+
+      let page3 = JSON.parse(sessionStorage.getItem('page3'));
+      this.service = page3.service;
+
+      let page4 = JSON.parse(sessionStorage.getItem('page4'));
+      this.smokes = page4.smoke;
+      this.amountday = page4.amountday;
+      this.pack = page4.pack;
+      this.typesmoke = page4.typesmoke;
+      this.typesmokeold = page4.typesmokeold;
+      this.amountyear = page4.amountyear;
+
+      let page5 = JSON.parse(sessionStorage.getItem('page5'));
+      this.drink = page5.drink;
+      this.amountdrinkweek = page5.amountdrinkweek;
+
+      let page6 = JSON.parse(sessionStorage.getItem('page6'));
+      this.exercise = page6.exercise;
+
+      let page7 = JSON.parse(sessionStorage.getItem('page7'));
+      this.sweet = page7.sweet;
+      this.salty = page7.salty;
+      this.creamy = page7.creamy;
+      this.nonselect = page7.nonselect;
+
+      let page8 = JSON.parse(sessionStorage.getItem('page8'));
+      this.motorcycle = page8.motorcycle;
+
+      let page9 = JSON.parse(sessionStorage.getItem('page9'));
+      this.capmotorcycle = page9.capmotorcycle
+
+      let page10 = JSON.parse(sessionStorage.getItem('page10'));
+      this.drinkmotorcycle = page10.drinkmotorcycle;
+
+      let page11 = JSON.parse(sessionStorage.getItem('page11'));
+      this.accident = page11.accident;
+
     let dmGroup = this.getDmvalue();
     this.dmValue = dmGroup.group;
     this.recommend = dmGroup.recommend;
@@ -107,11 +204,58 @@ export class LastformPage implements OnInit {
     this.htRecommend = htGroup.recommend;
   }
 
+
+  async presentLoading() {
+    this.isLoading = true;
+    return await this.loadingController.create({
+      message: 'กำลังบันทึกข้อมูล...',
+      //duration: 5000,
+    }).then(a => {
+      a.present().then(() => {
+        console.log('presented');
+        if (!this.isLoading) {
+          a.dismiss().then(() => console.log('abort presenting'));
+        }
+      });
+    });
+  }
+
+  async closeLoading() {
+    this.isLoading = false;
+    return await this.loadingController.dismiss().then(() => console.log('dismissed'));
+  }
+  
   getDetail(){
     let lastform = JSON.parse(sessionStorage.getItem('lastform'));
     this.bmiValue = this.getValueBmi(lastform.bmi);
     this.bmi = lastform.bmi;
+    this.waistline = lastform.waistline;
+
+    this.weight = lastform.weight;
+    this.height = lastform.height;
+    this.bp_s1_start = lastform.bp_s1_start;//BP ครั้งที่ 1
+    this.bp_s1_end = lastform.bp_s1_end;//BP ครั้งที่ 1
+    this.bp_s2_start = lastform.bp_s2_start;//BP ครั้งที่ 2
+    this.bp_s2_end = lastform.bp_s2_end;//BP ครั้งที่ 2
+    this.bp_avg_start = lastform.bp_avg_start;//BP เฉลี่ย
+    this.bp_avg_end = lastform.bp_avg_end;//BP เฉลี่ย
+    this.fbs = lastform.fbs;
+    this.sugar = lastform.sugar;
+		this.food = lastform.food;
   }
+
+  async Alert(text) {
+    const alert = await this.alert.create({
+      header: '!แจ้งเตือน',
+      subHeader: text,
+      //message: text,,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  
 
   currencyFormat(num) {
     return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
@@ -296,8 +440,30 @@ export class LastformPage implements OnInit {
     fbs: this.fbs,
     sugar: this.sugar,
     food: this.food,
+    waistline: this.waistline,
+    motorcycle: this.motorcycle,
+    capmotorcycle: this.capmotorcycle,
+    drinkmotorcycle: this.drinkmotorcycle,
+    accident: this.accident,
+    age: this.age,
     token: this.token
     }
+
+    this.http.post(this.API_URL_NCD + "/ncd",data).subscribe(res => {
+      this.presentLoading();
+      let data =  res.json();
+      let status = data.ok;
+      console.log(status);
+      if(status == true){
+        this.closeLoading();
+        this.router.navigateByUrl('/success');
+      } else {
+        this.Alert("บันทึกข้อมูลไม่สำเร็จกรุณาตรวจสอบ...!");
+        return false;
+      }
+    })
+
+    //console.log(data);
   }
 
 }

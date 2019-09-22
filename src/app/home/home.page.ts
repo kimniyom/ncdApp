@@ -13,7 +13,7 @@ export class HomePage implements OnInit {
     private router: Router,
     private http: Http,
     private statusBar: StatusBar,
-    @Inject('API_URL') private API_URL: string,
+    @Inject('API_URL_NCD') private API_URL_NCD: string,
   ) { }
 
   ngOnInit() {
@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
   checkToken(){
     let token = localStorage.getItem('token');
     if(!token){
-      this.http.get(this.API_URL + "/login/gentoken").subscribe(res => {
+      this.http.get(this.API_URL_NCD + "/login/gentoken").subscribe(res => {
         //localStorage.setItem('token',res[0]);
         let resSTR = JSON.stringify(res);
         let resJSON = JSON.parse(resSTR);

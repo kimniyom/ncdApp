@@ -57,6 +57,7 @@
 
     <ion-card class="lastmenu">
         <ion-card-content style="text-align: center;">
+<<<<<<< HEAD
             <h1 class="headmenu">การขับขี่</h1>
             <h3 style="color: red;">คำแนะนำ</h3>
             <h4 class="headmenu">
@@ -76,6 +77,16 @@
             <ion-img src="/assets/img/motercycle2.jpg"></ion-img>
         </ion-card-content>
     </ion-card>
+=======
+            <h1 class="headmenu">หมวกนิรภัย</h1>
+            <h2 class="headmenuvalue"></h2>
+            <h3 style="color: red;">คำแนะนำ</h3>
+            <ion-img src="/assets/img/motercycle1.jpg"></ion-img><br/>
+            <ion-img src="/assets/img/motercycle2.jpg"></ion-img>
+        </ion-card-content>
+    </ion-card>
+
+>>>>>>> e57051cc2dc7eac90855aa91479e781506240848
 
     <!--
 	<ion-list>
@@ -144,7 +155,7 @@
     <ion-toolbar>
         <ion-tabs>
             <ion-tab-bar slot="bottom">
-                <ion-button expand="block" fill="clear">
+                <ion-button expand="block" fill="clear" (click)="save()">
                     <ion-icon slot="start" name="save"></ion-icon>
                     บันทึกข้อมูล
                 </ion-button>

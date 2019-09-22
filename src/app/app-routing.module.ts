@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'page8', loadChildren: './pages/page8/page8.module#Page8PageModule' },
   { path: 'page9', loadChildren: './pages/page9/page9.module#Page9PageModule' },
   { path: 'page10', loadChildren: './pages/page10/page10.module#Page10PageModule' },
-  { path: 'page11', loadChildren: './pages/page11/page11.module#Page11PageModule' }
+  { path: 'page11', loadChildren: './pages/page11/page11.module#Page11PageModule' },
+  { path: 'success', loadChildren: './pages/success/success.module#SuccessPageModule' }
 
 ];
 @NgModule({
