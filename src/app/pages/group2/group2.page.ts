@@ -83,14 +83,12 @@ export class Group2Page implements OnInit {
   		this.showfbs = true;
   		this.food = "";
 		this.sugar = "";
-		this.waistline = "";
   	} else {
   		this.fbs = "";
   		this.sugar = "";
   		this.showsugar = true;
   		this.showfbs = true;
 		this.food = "";
-		this.waistline = "";
   	}
   }
 
