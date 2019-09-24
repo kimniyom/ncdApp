@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
+  //apiUrl: 'http://172.17.250.15',
   apiUrl: 'https://api.takpho.go.th',
-  apiUrlNcd: 'http://localhost:1990',
+  apiUrlNcd: 'https://ncd.takpho.go.th',
 };
 
 /*

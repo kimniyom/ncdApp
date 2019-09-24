@@ -15,6 +15,7 @@ export class FormPage implements OnInit {
   sex;
   privilege;
   age;
+  hospcode;
   showTrue: boolean = false;
   constructor(
     private router: Router,
@@ -86,6 +87,7 @@ export class FormPage implements OnInit {
         }
       }
       this.age = person.AGE;
+      this.hospcode = person.HOSPCODE;
     })
   }
 
@@ -101,7 +103,8 @@ export class FormPage implements OnInit {
       name: this.name,
       lname: this.lname,
       age: this.age,
-      privilege: this.privilege
+      privilege: this.privilege,
+      hospcode: this.hospcode
     }
     //console.log(data);
     sessionStorage.setItem("form", JSON.stringify(data));
