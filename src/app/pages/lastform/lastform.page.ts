@@ -1,8 +1,10 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController,LoadingController } from '@ionic/angular';
+import { AlertController,LoadingController,ModalController } from '@ionic/angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import { StatusBar, } from '@ionic-native/status-bar/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { FormuladmPage } from '../formuladm/formuladm.page';
+  import { from } from 'rxjs';
 @Component({
   selector: 'app-lastform',
   templateUrl: './lastform.page.html',
@@ -101,6 +103,7 @@ export class LastformPage implements OnInit {
     private alert: AlertController,
     private loadingController: LoadingController,
     private statusBar: StatusBar,
+    private modalController: ModalController,
     @Inject('API_URL_NCD') private API_URL_NCD: string,
     ) { }
   
@@ -224,6 +227,14 @@ export class LastformPage implements OnInit {
     this.isLoading = false;
     return await this.loadingController.dismiss().then(() => console.log('dismissed'));
   }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: FormuladmPage
+    });
+    return await modal.present();
+  }
+
   
   getDetail(){
     let lastform = JSON.parse(sessionStorage.getItem('lastform'));
