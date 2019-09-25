@@ -96,6 +96,7 @@ export class LastformPage implements OnInit {
   capmotorcycle;
   drinkmotorcycle;
   accident;
+  scoreDmValue;
   //
   htRecommend;
   constructor(
@@ -111,7 +112,6 @@ export class LastformPage implements OnInit {
 
   ngOnInit() {
     this.token = localStorage.getItem('token');
-
     this.statusBar.backgroundColorByHexString('#3880ff');
   	let item = JSON.parse(sessionStorage.getItem('form'));
     this.headName = item.name + ' ' + item.lname;
@@ -122,7 +122,9 @@ export class LastformPage implements OnInit {
     this.sex = item.sex;
     this.age = item.age;
     this.privilege = item.privilege;
-
+    this.scoreDmValue = this.scoreDm();
+    console.log(this.scoreDmValue);
+    
     let page1 = JSON.parse(sessionStorage.getItem('page1'));
       this.mom_dm = page1.mom_dm;//เบาหวาน
       this.mom_ht = page1.mom_ht;//ความดัน
@@ -208,8 +210,6 @@ export class LastformPage implements OnInit {
     this.htRecommend = htGroup.recommend;
   }
   
-
-
   async presentLoading() {
     this.isLoading = true;
     return await this.loadingController.create({
@@ -237,7 +237,6 @@ export class LastformPage implements OnInit {
     return await modal.present();
   }
 
-  
   getDetail(){
     let lastform = JSON.parse(sessionStorage.getItem('lastform'));
     this.bmiValue = this.getValueBmi(lastform.bmi);
@@ -268,25 +267,87 @@ export class LastformPage implements OnInit {
     await alert.present();
   }
 
-  
-
   currencyFormat(num) {
     return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   }
 
-
   getValueBmi(bmi){
     if(bmi < 18.5){
       return "ผอม";
-    } else if(bmi >= 18.5 && bmi <= 22.9){
+    } else if(bmi >= 18.5 && bmi <= 22.9) {
       return "ปกติ";
-    } else if(bmi >= 23 && bmi <= 24.9){
+    } else if(bmi >= 23 && bmi <= 24.9) {
       return "น้ำหนักตัวมากเกินไป";
-    } else if(bmi >= 25 && bmi <= 29.9){
+    } else if(bmi >= 25 && bmi <= 29.9) {
       return "อ้วนมาก(ระดับ 1)";
-    } else if(bmi > 30){
+    } else if(bmi > 30) {
       return "อ้วนมาก(ระดับ 2)";
     }
+  }
+
+  scoreDm(){
+    let lastform = JSON.parse(sessionStorage.getItem('lastform'));
+    let sex = this.sex;
+    let age = this.age;
+    let bmi = lastform.bmi;
+    let waistline = this.waistline;
+    let ht = this.me_ht;
+    let momDm = this.mom_dm;//พ่อแม่เป็นเบาหวาน
+    let bDm = this.b_dm;//พี่น้องเป็นเบาหวาน
+
+    let sexScore;
+    let ageScore;
+    let bmiScore;
+    let waistlineScore;
+    let htScore;
+    let familyScore;
+
+    if(sex == "F"){
+      sexScore = 0;
+      if(waistline < 80){
+        waistlineScore = 0;
+      } else if(waistline >= 80){
+        waistlineScore = 2;
+      }
+    } else {
+      sexScore = 2;
+      if(waistline < 90){
+        waistlineScore = 0;
+      } else if(waistline >= 90){
+        waistlineScore = 2;
+      }
+    }
+
+    if(age >= 35 && age <= 44){
+      ageScore = 0;
+    } else if(age >= 45 && age <= 49){
+      ageScore = 1;
+    } else if(age >= 50){
+      ageScore = 2;
+    }
+
+    if(bmi < 23){
+      bmiScore = 0;
+    } else if(bmi >= 23 && bmi >= 27.5){
+      bmiScore = 3;
+    } else if(bmi > 27.5){
+      bmiScore = 5;
+    }
+
+    if(ht == 1) {
+      htScore = 2;
+    } else {
+      htScore = 0;
+    }
+
+    if(momDm == true || bDm == true){
+      familyScore = 4;
+    } else {
+      familyScore = 0;
+    }
+
+    let total = (sexScore + ageScore + bmiScore + waistlineScore + htScore + familyScore);
+    return total;
   }
 
   getDmvalue(){
@@ -302,9 +363,9 @@ export class LastformPage implements OnInit {
     this.dm = value;
     if(value < 100){
       return {group: 'กลุ่มปกติ',recommend:'ควรออกกำลังกายสม่ำเสมอ รักษาน้ำหนักตัว ตรวจตวามดันเลือด'};
-    } else if(value >= 100 && value <= 125){
+    } else if(value >= 100 && value <= 125) {
       return {group: 'กลุ่มเสี่ยงสูง',recommend:'ควรควบคุ้มอาหารและออกกำลังกายสม่ำเสมอ ควบคุมน้ำหนักตัว ตรวจตวามดันเลือดและตรวจน้ำตาลในเลือด'};
-    } else if(value >= 126){
+    } else if(value >= 126) {
       return {group: 'กลุ่มสงสัยป่วยรายใหม่',recommend:'แนะนำให้พบเจ้าหน้าที่เพื่อตรวจน้ำตาลในเลือดซ้ำ'};
     }
   }
@@ -319,19 +380,19 @@ export class LastformPage implements OnInit {
       return "ปกติ";
     } 
 
-    if(drink == 3 && smoke == 3){ //เคยดื่มและเคยสูบ
+    if(drink == 3 && smoke == 3){//เคยดื่มและเคยสูบ
       return "ปกติ";
     }
 
-    if(drink == 1 && smoke == 1){ //ดื่มและสูบ
+    if(drink == 1 && smoke == 1){//ดื่มและสูบ
       return "กลุ่มเสี่ยงสูง";
     }
 
-    if(drink == 1 && smoke != 1){ //ดื่มอย่างเดียว
+    if(drink == 1 && smoke != 1){//ดื่มอย่างเดียว
       return "กลุ่มเสี่ยง";
     }
 
-    if(drink != 1 && smoke == 1 ){ //สูบอยางเดียว
+    if(drink != 1 && smoke == 1 ){//สูบอยางเดียว
       return "กลุ่มเสี่ยง";
     } 
   }
@@ -387,6 +448,7 @@ export class LastformPage implements OnInit {
   }
 
   save(){
+    let year = new Date().getFullYear();
     let data = {
     cid:this.cid,
     name: this.name, 
@@ -459,6 +521,7 @@ export class LastformPage implements OnInit {
     drinkmotorcycle: this.drinkmotorcycle,
     accident: this.accident,
     age: this.age,
+    year: year,
     token: this.token
     }
 

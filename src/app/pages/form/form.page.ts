@@ -9,6 +9,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   styleUrls: ['./form.page.scss'],
 })
 export class FormPage implements OnInit {
+  isLoading = false;
   cid;
   name;
   lname;
@@ -40,6 +41,7 @@ export class FormPage implements OnInit {
     await alert.present();
   }
 
+  /*
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'กำลังตรวจสอบข้อมูล...',
@@ -50,6 +52,26 @@ export class FormPage implements OnInit {
     //const { role, data } = await loading.onDidDismiss();
 
     //console.log('Loading dismissed!');
+  }
+*/
+  async presentLoading() {
+    this.isLoading = true;
+    return await this.loadingController.create({
+      message: 'กำลังตรวจสอบข้อมูล...',
+      //duration: 5000,
+    }).then(a => {
+      a.present().then(() => {
+        console.log('presented');
+        if (!this.isLoading) {
+          a.dismiss().then(() => console.log('abort presenting'));
+        }
+      });
+    });
+  }
+
+  async closeLoading() {
+    this.isLoading = false;
+    return await this.loadingController.dismiss().then(() => console.log('dismissed'));
   }
 
   checkCid(){
@@ -71,12 +93,12 @@ export class FormPage implements OnInit {
       let person = data.rows[0][0];
       console.log(person);
       if(!person){
-        this.loadingController.dismiss();
+        this.closeLoading();
         this.showTrue = false;
         this.Alert("ไม่พบข้อมูลในระบบจังหวัด...");
         return false;
       } else {
-        this.loadingController.dismiss();
+        this.closeLoading();
         this.showTrue = true;
         this.name = person.NAME;
         this.lname = person.LNAME;
@@ -84,6 +106,13 @@ export class FormPage implements OnInit {
           this.sex = "M";
         } else {
           this.sex = "F";
+        }
+
+        if(person.AGE < 35){
+          this.closeLoading();
+          this.showTrue = false;
+          this.Alert("อายุไม่ได้อยู่ในช่วงการคัดกรอง...");
+          return false;
         }
       }
       this.age = person.AGE;
