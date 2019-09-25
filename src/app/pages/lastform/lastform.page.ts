@@ -1,10 +1,11 @@
 import { Component, OnInit,Inject } from '@angular/core';
+//import { ModalController, ViewController } from 'ionic-angular';
 import { Router } from '@angular/router';
 import { AlertController,LoadingController,ModalController } from '@ionic/angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { FormuladmPage } from '../formuladm/formuladm.page';
-  import { from } from 'rxjs';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-lastform',
   templateUrl: './lastform.page.html',
@@ -206,6 +207,7 @@ export class LastformPage implements OnInit {
     this.ht = htGroup.group;
     this.htRecommend = htGroup.recommend;
   }
+  
 
 
   async presentLoading() {
