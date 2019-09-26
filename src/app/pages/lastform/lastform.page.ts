@@ -13,6 +13,12 @@ import { from } from 'rxjs';
 })
 export class LastformPage implements OnInit {
   isLoading = false;
+  isFbs = false;
+  isSugar = false;
+  fbsValue;
+  sugarValue;
+  fbsValueText;
+  sugarValueText
   loading;
   headName;
   bmiValue;
@@ -197,9 +203,9 @@ export class LastformPage implements OnInit {
       let page11 = JSON.parse(sessionStorage.getItem('page11'));
       this.accident = page11.accident;
 
-    let dmGroup = this.getDmvalue();
-    this.dmValue = dmGroup.group;
-    this.recommend = dmGroup.recommend;
+    this.getDmvalue();
+    //this.dmValue = dmGroup.group;
+    //this.recommend = dmGroup.recommend;
     this.getDetail();
     this.strokeValue = this.getStroke();
     this.paralysis = this.getParalysis();
@@ -253,8 +259,9 @@ export class LastformPage implements OnInit {
     this.sugar = lastform.sugar;
 		this.food = lastform.food;
     
-    let scoreDmValue = this.scoreDm();
-    console.log(scoreDmValue);
+    this.scoreDmValue = this.scoreDm();
+    this.recommend = this.recommendDm();
+
   }
 
   async Alert(text) {
@@ -348,7 +355,8 @@ export class LastformPage implements OnInit {
     }
 
     let total = (sexScore + ageScore + bmiScore + waistlineScore + htScore + familyScore);
-    return "sexScore = " + sexScore + " ageScore = " + ageScore + " bmiScore = " + bmiScore + " รอบเอว = " + waistlineScore + " ความดัน = " + htScore + " คนในครอบครัวเบาหวาน = " + familyScore;
+    //return "sexScore = " + sexScore + " ageScore = " + ageScore + " bmiScore = " + bmiScore + " รอบเอว = " + waistlineScore + " ความดัน = " + htScore + " คนในครอบครัวเบาหวาน = " + familyScore;
+    return total;
   }
 
   getDmvalue(){
@@ -357,19 +365,49 @@ export class LastformPage implements OnInit {
     let sugar = lastform.sugar;
     let value;
     if(fbs){
-      value = fbs;
+      this.isFbs = true;
+      this.isSugar = false;
+      this.fbsValue = fbs;
+      if(fbs < 100){
+        this.fbsValueText =  'กลุ่มปกติ';
+      } else if(fbs >= 100 && fbs <= 125) {
+        this.fbsValueText = 'กลุ่มเสี่ยงสูง';
+      } else if(fbs >= 126) {
+        this.fbsValueText = 'กลุ่มสงสัยป่วย';
+      }
     } else {
-      value = sugar;
+      this.isSugar = true;
+      this.isFbs = false;
+      this.sugarValue = sugar;
+      if(sugar < 100){
+        this.sugarValueText =  'กลุ่มปกติ';
+      } else if(sugar >= 140 && sugar <= 199) {
+        this.sugarValueText = 'กลุ่มเสี่ยงสูง';
+      } else if(sugar >= 200) {
+        this.sugarValueText = 'กลุ่มสงสัยป่วย';
+      }
     }
-    this.dm = value;
-    if(value < 100){
-      return {group: 'กลุ่มปกติ',recommend:'ควรออกกำลังกายสม่ำเสมอ รักษาน้ำหนักตัว ตรวจตวามดันเลือด'};
-    } else if(value >= 100 && value <= 125) {
-      return {group: 'กลุ่มเสี่ยงสูง',recommend:'ควรควบคุ้มอาหารและออกกำลังกายสม่ำเสมอ ควบคุมน้ำหนักตัว ตรวจตวามดันเลือดและตรวจน้ำตาลในเลือด'};
-    } else if(value >= 126) {
-      return {group: 'กลุ่มสงสัยป่วยรายใหม่',recommend:'แนะนำให้พบเจ้าหน้าที่เพื่อตรวจน้ำตาลในเลือดซ้ำ'};
-    }
+    
   }
+
+  recommendDm(){
+    let score = this.scoreDmValue;
+    let recommend;
+    if(score <= 2){
+      recommend = "ความเสี่ยงน้อยมาก โอกาศเป็นเบาหวานน้อยกว่า 1 ใน 20 ควรออกกำลังกายสม่ำเสมอ รักษาน้ำหนักตัว ตรวจความดันเลือด";
+    } else if(score >= 3 && score <= 5){
+      recommend = "ความเสี่ยงน้อย โอกาศเป็นเบาหวาน 1 ใน 12 ควรออกกำลังกายสม่ำเสมอ รักษาน้ำหนักตัว ตรวจความดันเลือด";
+    } else if(score >= 6 && score <= 8){
+      recommend = "ความเสี่ยงปานกลาง โอกาศเป็นเบาหวานประมาณ 1 ใน 7 ควรควบคุมอาหาร ควรออกกำลังกายสม่ำเสมอ รักษาน้ำหนักตัว ตรวจความดันเลือด";
+    } else if(score >= 9 && score <= 10){
+      recommend = "ความเสี่ยงสูง โอกาศเป็นเบาหวานประมาณ 1 ใน 4 ควรควบคุมอาหารและออกกำลังกายสม่ำเสมอ รักษาน้ำหนักตัว ตรวจความดันเลือดและตรวจน้ำตาลในเลือด";
+    } else if(score >= 11){
+      recommend = "ความเสี่ยงสูงมาก โอกาศเป็นเบาหวานประมาณ 1 ใน 3 ควรควบคุมอาหารและออกกำลังกายสม่ำเสมอ รักษาน้ำหนักตัว ตรวจความดันเลือดและตรวจน้ำตาลในเลือด";
+    }
+
+    return recommend;
+  }
+
 
   getStroke(){
     let smokes = JSON.parse(sessionStorage.getItem('page4'));

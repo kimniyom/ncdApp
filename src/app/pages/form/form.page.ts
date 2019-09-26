@@ -88,7 +88,6 @@ export class FormPage implements OnInit {
     }
     this.presentLoading();
     this.http.post(this.API_URL + "/person/",{cid: cid}).subscribe(res => {
-
       let data =  res.json();
       let person = data.rows[0][0];
       console.log(person);

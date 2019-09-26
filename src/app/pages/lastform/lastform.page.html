@@ -10,8 +10,16 @@
     <ion-card class="lastmenu">
         <ion-card-content style="text-align: center;">
             <h1 class="headmenu">โรคเบาหวาน</h1>
-            <h2 class="headmenuvalue">ผล {{ dmValue }}</h2>
+            <div *ngIf="isFbs == true">
+                <h2 class="headmenuvalue">การเจาะน้ำตาลหลังอดอาหาร 8 ชั่วโมง</h2>
+                <h2 class="headmenuvalue">ผล {{ fbsValue }} = {{ fbsValueText }} </h2>
+            </div>
+            <div *ngIf="isSugar == true">
+                <h2 class="headmenuvalue">การเจาะน้ำตาลหลังอาหาร</h2>
+                <h2 class="headmenuvalue">ผล {{ sugarValue }} = {{ sugarValueText }}</h2>
+            </div>
             <hr/>
+            <h2 class="headmenuvalue">คะแนน {{ scoreDmValue }}</h2>
             <h3 style="color: red;">คำแนะนำ</h3>
             <p class="headmenuvalue">{{ recommend }}</p>
             <ion-button (click)="presentModal()">
