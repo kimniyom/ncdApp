@@ -122,8 +122,6 @@ export class LastformPage implements OnInit {
     this.sex = item.sex;
     this.age = item.age;
     this.privilege = item.privilege;
-    this.scoreDmValue = this.scoreDm();
-    console.log(this.scoreDmValue);
     
     let page1 = JSON.parse(sessionStorage.getItem('page1'));
       this.mom_dm = page1.mom_dm;//เบาหวาน
@@ -254,6 +252,9 @@ export class LastformPage implements OnInit {
     this.fbs = lastform.fbs;
     this.sugar = lastform.sugar;
 		this.food = lastform.food;
+    
+    let scoreDmValue = this.scoreDm();
+    console.log(scoreDmValue);
   }
 
   async Alert(text) {
@@ -347,7 +348,7 @@ export class LastformPage implements OnInit {
     }
 
     let total = (sexScore + ageScore + bmiScore + waistlineScore + htScore + familyScore);
-    return total;
+    return "sexScore = " + sexScore + " ageScore = " + ageScore + " bmiScore = " + bmiScore + " รอบเอว = " + waistlineScore + " ความดัน = " + htScore + " คนในครอบครัวเบาหวาน = " + familyScore;
   }
 
   getDmvalue(){

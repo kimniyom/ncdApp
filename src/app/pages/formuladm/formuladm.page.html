@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>การคำนวณโรคเบาหวาน</ion-title>
+        <ion-title class="headmenu">การคำนวณปัจจัยเสี่ยงต่อการเป็นโรคเบาหวาน</ion-title>
         <ion-buttons slot="primary">
             <ion-button (click)="dismiss()">
                 <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -9,6 +9,229 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+	<h4>ค่าคะแนนของปัจจัยเสี่ยงของการเป็นโรคเบาหวาน</h4>
+	<ion-list>
+        <ion-list-header class="headmenu">
+          1.เพศ
+        </ion-list-header>
 
+        <ion-item-sliding>
+          <ion-item>
+            <ion-label class="font-th">ผู้หญิง</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 0</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label class="font-th">ผู้ชาย</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 1</ion-note>
+          </ion-item>
+          </ion-item-sliding>
+      </ion-list>
+
+      <ion-list>
+        <ion-list-header class="headmenu">
+          2.อายุ
+        </ion-list-header>
+        <ion-item-sliding>
+          <ion-item>
+            <ion-label class="font-th">35-44 ปี</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 0</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label class="font-th">45-49 ปี</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 1</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label class="font-th">>= 50 ปี</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 2</ion-note>
+          </ion-item>
+          </ion-item-sliding>
+      </ion-list>
+
+      <ion-list>
+        <ion-list-header class="headmenu">3.ดัชนีมวลกาย</ion-list-header>
+        <ion-item-sliding>
+          <ion-item>
+            <ion-label class="font-th">< 23 kg/(m*m)</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 0</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label class="font-th">23-27.5 kg/(m*m)</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 3</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label class="font-th">> 27.5 kg/(m*m)</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 5</ion-note>
+          </ion-item>
+          </ion-item-sliding>
+      </ion-list>
+
+      <ion-list>
+        <ion-list-header class="headmenu">4.ความยาวเส้นรอบเอว</ion-list-header>
+        <ion-item-sliding>
+          <ion-item>
+            <ion-label class="font-th">ชาย < 90 cm</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 0</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label class="font-th">หญิง < 80 cm</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 0</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label class="font-th">ชาย >= 90 cm</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 2</ion-note>
+          </ion-item>
+			 <ion-item>
+            <ion-label class="font-th">หญิง >= 80 cm</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 2</ion-note>
+          </ion-item>
+          </ion-item-sliding>
+      </ion-list>
+
+      <ion-list>
+        <ion-list-header class="headmenu">5.เป็นโรคความดันโลหิตสูง</ion-list-header>
+        <ion-item-sliding>
+          <ion-item>
+            <ion-label class="font-th">ไม่เป็นโรคความดันโลหิตสูง</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 0</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label class="font-th">เป็นโรคความดันโลหิตสูง</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 2</ion-note>
+          </ion-item>
+          </ion-item-sliding>
+      </ion-list>
+
+	<ion-list>
+        <ion-list-header class="headmenu">6.ประวัติเบาหวานใน พ่อ แม่ พี่ น้อง</ion-list-header>
+        <ion-item-sliding>
+          <ion-item>
+            <ion-label class="font-th">ไม่มีประวัติ</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 0</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label class="font-th">มีประวัติ</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">คะแนน 4</ion-note>
+          </ion-item>
+          </ion-item-sliding>
+      </ion-list>
+
+	   <h4>ผลการเจาะเลือด</h4>
+      <ion-list>
+        <ion-list-header class="headmenu">น้ำตาลอดอาหาร 8 ชม.</ion-list-header>
+        <ion-item-sliding>
+          <ion-item>
+            <ion-label class="font-th">100 – 125 mg%</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">กลุ่มเสี่ยงสูง</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label class="font-th">≥ 126 mg%</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">กลุ่มสงสัยป่วย</ion-note>
+          </ion-item>
+          </ion-item-sliding>
+      </ion-list>
+	
+	<ion-list>
+        <ion-list-header class="headmenu">น้ำตาลหลังอาหาร</ion-list-header>
+        <ion-item-sliding>
+          <ion-item>
+            <ion-label class="font-th">140 – 199 mg%</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">กลุ่มเสี่ยงสูง</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label class="font-th">≥ 200 mg%</ion-label>
+            <ion-note slot="end" color="primary" class="font-th">กลุ่มสงสัยป่วย</ion-note>
+          </ion-item>
+          </ion-item-sliding>
+      </ion-list>
+
+      <ion-grid>
+      	<ion-row class="headmenu">
+      		<ion-col>
+      			ระดับความเสี่ยงของโรคเบาหวานจำแนกตามช่วงคะแนน
+      		</ion-col>
+      	</ion-row>
+      	<ion-row class="headmenu">
+      		<ion-col style="text-align: center;">
+      			ค่าคะแนน<br/>ความเสี่ยง
+      		</ion-col>
+      		<ion-col style="text-align: center;">
+      			ความเสี่ยงเป็นเบาหวาน<br/>ใน 12 ปี
+      		</ion-col>
+      		<ion-col style="text-align: center;">
+      			ข้อแนะนำ
+      		</ion-col>
+      	</ion-row>
+      	<ion-row class="font-th">
+      		<ion-col style="text-align: center;">
+      			<= 2
+      		</ion-col>
+      		<ion-col style="text-align: center;">
+      			<= 5%
+      		</ion-col>
+      		<ion-col>
+      			ความเสี่ยงน้อยมาก โอกาศเป็นเบาหวานน้อยกว่า 1 ใน 20 ควรออกกำลังกายสม่ำเสมอ รักษาน้ำหนักตัว ตรวจความดันเลือด
+      		</ion-col>
+      	</ion-row>
+      	<ion-row class="font-th">
+      		<ion-col style="text-align: center;">
+      			3 - 5
+      		</ion-col>
+      		<ion-col style="text-align: center;">
+      			5 - 10%
+      		</ion-col>
+      		<ion-col>
+      			ความเสี่ยงน้อย โอกาศเป็นเบาหวาน 1 ใน 12 ควรออกกำลังกายสม่ำเสมอ รักษาน้ำหนักตัว ตรวจความดันเลือด
+      		</ion-col>
+      	</ion-row>
+      	<ion-row class="font-th">
+      		<ion-col style="text-align: center;">
+      			6 - 8
+      		</ion-col>
+      		<ion-col style="text-align: center;">
+      			11 - 20%
+      		</ion-col>
+      		<ion-col>
+      			ความเสี่ยงปานกลาง โอกาศเป็นเบาหวานประมาณ 1 ใน 7 ควรควบคุมอาหาร ควรออกกำลังกายสม่ำเสมอ รักษาน้ำหนักตัว ตรวจความดันเลือด
+      		</ion-col>
+      	</ion-row>
+      	<ion-row class="font-th">
+      		<ion-col style="text-align: center;">
+      			9 - 10
+      		</ion-col>
+      		<ion-col style="text-align: center;">
+      			21 - 30%
+      		</ion-col>
+      		<ion-col>
+      			ความเสี่ยงสูง โอกาศเป็นเบาหวานประมาณ 1 ใน 4 ควรควบคุมอาหารและออกกำลังกายสม่ำเสมอ รักษาน้ำหนักตัว ตรวจความดันเลือดและตรวจน้ำตาลในเลือด
+      		</ion-col>
+      	</ion-row>
+      	<ion-row class="font-th">
+      		<ion-col style="text-align: center;">
+      			>= 11
+      		</ion-col>
+      		<ion-col style="text-align: center;">
+      			>= 30%
+      		</ion-col>
+      		<ion-col>
+      			ความเสี่ยงสูงมาก โอกาศเป็นเบาหวานประมาณ 1 ใน 3 ควรควบคุมอาหารและออกกำลังกายสม่ำเสมอ รักษาน้ำหนักตัว ตรวจความดันเลือดและตรวจน้ำตาลในเลือด
+      		</ion-col>
+      	</ion-row>
+      </ion-grid>
+	
+	<ion-card color="warning">
+		<ion-card-content>
+			<div class="font-th" style="color:#000000;">
+				พบว่าคพแนนมากกว่า 9 แนะนำเจาะเลือดตรวจน้ำตาลในเลือด
+			</div>
+		</ion-card-content>
+	</ion-card>
+
+		<ion-card color="danger">
+		<ion-card-content>
+			<div class="font-th">
+				กลุ่มสงสัยป่วย แนะนำพบเจ้าหน้าที่เพื่อตรวจน้ำตาลในเลือด
+			</div>
+		</ion-card-content>
+	</ion-card>
 </ion-content>
