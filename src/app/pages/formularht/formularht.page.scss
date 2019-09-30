@@ -1,0 +1,72 @@
+@font-face {
+    font-family: thaisanslite;
+    src: url('./../../../assets/thaisanslite/thaisanslite_r1.ttf') format('truetype');
+}
+
+
+/*********************************
+2. Body and some general stuff
+*********************************/
+
+#font-th {
+    font-family: 'thaisanslite';
+}
+
+.font-th {
+    font-family: 'thaisanslite';
+    font-size: 16px;
+}
+
+#head-form {
+    font-size: 18px;
+}
+
+h4 {
+    font-family: 'thaisanslite';
+    font-size: 18px;
+}
+
+.headmenu {
+    font-family: 'thaisanslite';
+    font-weight: bold;
+    color: cadetblue;
+    font-size: 20px;
+}
+
+.subheadmenu {
+    font-family: 'thaisanslite';
+    font-weight: bold;
+    color: cadetblue;
+    font-size: 18px;
+}
+
+.content .font-th {
+    margin-left: 10px;
+}
+
+.textboxlabel {
+    font-size: 18px;
+    font-family: 'thaisanslite';
+}
+
+.textbox {
+    font-size: 16px;
+    font-family: 'thaisanslite';
+}
+
+.bg-head {
+    background-color: #018577;
+    margin: 0px;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+}
+
+.bg-head .text-color {
+    color: #ffffff;
+    font-family: 'thaisanslite';
+    font-weight: bold;
+    font-size: 20px;
+}
