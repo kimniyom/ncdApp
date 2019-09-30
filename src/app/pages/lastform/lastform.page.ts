@@ -5,6 +5,7 @@ import { AlertController, LoadingController, ModalController } from '@ionic/angu
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { FormuladmPage } from '../formuladm/formuladm.page';
+import { FormularhtPage } from '../formularht/formularht.page';
 import { from } from 'rxjs';
 @Component({
   selector: 'app-lastform',
@@ -237,14 +238,16 @@ export class LastformPage implements OnInit {
 
   async presentModal() {
     const modal = await this.modalController.create({
-      component: this.page
+      component: FormuladmPage
     });
     return await modal.present();
   }
 
-  async popupPage(page){
-    this.page =  page;
-    this.presentModal();
+  async popupHt() {
+    const modal = await this.modalController.create({
+      component: FormularhtPage
+    });
+    return await modal.present();
   }
 
   getDetail() {
