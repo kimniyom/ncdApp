@@ -11,6 +11,7 @@ import { FormuladmPage } from '../pages/formuladm/formuladm.page';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  page;
   constructor(
     private router: Router,
     private http: Http,
@@ -22,11 +23,12 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.statusBar.backgroundColorByHexString('#fffee6');
     this.checkToken();
+    this.page = "FormuladmPage";
   }
 
   async presentModal() {
     const modal = await this.modalController.create({
-      component: FormuladmPage
+      component: this.page
     });
     return await modal.present();
   }

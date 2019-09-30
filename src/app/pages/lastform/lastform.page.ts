@@ -12,6 +12,7 @@ import { from } from 'rxjs';
   styleUrls: ['./lastform.page.scss'],
 })
 export class LastformPage implements OnInit {
+  page;
   isLoading = false;
   isFbs = false;
   isSugar = false;
@@ -234,15 +235,15 @@ export class LastformPage implements OnInit {
     return await this.loadingController.dismiss().then(() => console.log('dismissed'));
   }
 
-  async presentModal(page) {
+  async presentModal() {
     const modal = await this.modalController.create({
-      component: page
+      component: this.page
     });
     return await modal.present();
   }
 
   async popupPage(page){
-    this.presentModal(page);
+    this.page =  page;
   }
 
   getDetail() {
