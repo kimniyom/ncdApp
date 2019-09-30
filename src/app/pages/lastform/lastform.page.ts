@@ -234,11 +234,15 @@ export class LastformPage implements OnInit {
     return await this.loadingController.dismiss().then(() => console.log('dismissed'));
   }
 
-  async presentModal() {
+  async presentModal(page) {
     const modal = await this.modalController.create({
-      component: FormuladmPage
+      component: page
     });
     return await modal.present();
+  }
+
+  async popupPage(page){
+    this.presentModal(page);
   }
 
   getDetail() {

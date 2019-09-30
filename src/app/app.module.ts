@@ -10,12 +10,14 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormuladmPage } from './pages/formuladm/formuladm.page';
+import { FormulahtPage } from './pages/formulaht/formulaht.page';
 import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormuladmPage
+    FormuladmPage,
+    FormulahtPage
   ],
   entryComponents: [
     FormuladmPage

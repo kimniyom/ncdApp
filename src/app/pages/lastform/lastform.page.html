@@ -22,7 +22,7 @@
             <h2 class="headmenuvalue">คะแนน {{ scoreDmValue }}</h2>
             <h3 style="color: red;">คำแนะนำ</h3>
             <p class="headmenuvalue">{{ recommend }}</p>
-            <ion-button (click)="presentModal()">
+            <ion-button (click)="popupPage('formuladm')">
                 <ion-icon name="more"></ion-icon> การคำนวณ
             </ion-button>
         </ion-card-content>
@@ -36,6 +36,9 @@
             <hr/>
             <h3 style="color: red;">คำแนะนำ</h3>
             <p class="headmenuvalue">{{ htRecommend }}</p>
+            <ion-button (click)="popupPage('formulaht')">
+                <ion-icon name="more"></ion-icon> การคำนวณ
+            </ion-button>
         </ion-card-content>
     </ion-card>
 
