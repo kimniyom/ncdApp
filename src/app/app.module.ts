@@ -20,7 +20,8 @@ import { from } from 'rxjs';
     FormularhtPage
   ],
   entryComponents: [
-    FormuladmPage
+    FormuladmPage,
+    FormularhtPage
   ],
   imports: [
     BrowserModule, 
