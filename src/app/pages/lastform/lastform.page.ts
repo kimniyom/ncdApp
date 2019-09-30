@@ -244,6 +244,7 @@ export class LastformPage implements OnInit {
 
   async popupPage(page){
     this.page =  page;
+    this.presentModal();
   }
 
   getDetail() {

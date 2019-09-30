@@ -23,7 +23,6 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.statusBar.backgroundColorByHexString('#fffee6');
     this.checkToken();
-    this.page = "FormuladmPage";
   }
 
   async presentModal() {
@@ -31,6 +30,11 @@ export class HomePage implements OnInit {
       component: this.page
     });
     return await modal.present();
+  }
+
+  async popupPage(page){
+    this.page =  page;
+    this.presentModal();
   }
 
   dismiss() {
