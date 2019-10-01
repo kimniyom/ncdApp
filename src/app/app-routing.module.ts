@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'page11', loadChildren: './pages/page11/page11.module#Page11PageModule' },
   { path: 'success', loadChildren: './pages/success/success.module#SuccessPageModule' },
   { path: 'formuladm', loadChildren: './pages/formuladm/formuladm.module#FormuladmPageModule' },
-  { path: 'formularht', loadChildren: './pages/formularht/formularht.module#FormularhtPageModule' }
+  { path: 'formularht', loadChildren: './pages/formularht/formularht.module#FormularhtPageModule' },
+  { path: 'formulaobesity', loadChildren: './pages/formulaobesity/formulaobesity.module#FormulaobesityPageModule' }
 
 ];
 @NgModule({

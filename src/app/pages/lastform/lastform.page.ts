@@ -6,6 +6,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { FormuladmPage } from '../formuladm/formuladm.page';
 import { FormularhtPage } from '../formularht/formularht.page';
+import { FormulaobesityPage } from '../formulaobesity/formulaobesity.page';
+
 import { from } from 'rxjs';
 @Component({
   selector: 'app-lastform',
@@ -21,6 +23,7 @@ export class LastformPage implements OnInit {
   sugarValue;
   fbsValueText;
   sugarValueText
+  waistlineText;
   loading;
   headName;
   bmiValue;
@@ -250,6 +253,13 @@ export class LastformPage implements OnInit {
     return await modal.present();
   }
 
+  async popupObesity() {
+    const modal = await this.modalController.create({
+      component: FormulaobesityPage
+    });
+    return await modal.present();
+  }
+
   getDetail() {
     let lastform = JSON.parse(sessionStorage.getItem('lastform'));
     this.bmiValue = this.getValueBmi(lastform.bmi);
@@ -270,7 +280,7 @@ export class LastformPage implements OnInit {
 
     this.scoreDmValue = this.scoreDm();
     this.recommend = this.recommendDm();
-
+    this.waistlineText = this.getWaistlineValue();
   }
 
   async Alert(text) {
@@ -471,6 +481,25 @@ export class LastformPage implements OnInit {
       return "กลุ่มเสี่ยง";
     }
 
+  }
+
+  getWaistlineValue(){
+    let sex = this.sex;
+    let waistline = this.waistline;
+    if(sex == "M"){
+      if(waistline < 90){
+        return "กลุ่มปกติ";
+      } else {
+        return "กลุ่มเสี่ยง";
+      }
+    } else {
+      if(waistline < 80){
+        return "กลุ่มปกติ";
+      } else {
+        return "กลุ่มเสี่ยง";
+      }
+    }
+    
   }
 
   getHtvalue() {

@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title class="headmenu">การแปลผลโรคอ้วน</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button (click)="dismiss()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row color="medium" class="font-th">
+            <ion-col><b>ผลประเมิน Obesity</b></ion-col>
+            <ion-col><b>(อ้วน)</b></ion-col>
+        </ion-row>
+        <ion-row color="success" class="font-th">
+            <ion-col>ผู้ชายรอบเอว
+                < 90</ion-col>
+                    <ion-col>กลุ่มปกตแ</ion-col>
+        </ion-row>
+        <ion-row color="success" class="font-th">
+            <ion-col>ผู้หญิงรอบเอว
+                < 80</ion-col>
+                    <ion-col>กลุ่มปกติ</ion-col>
+        </ion-row>
+        <ion-row color="warning" class="font-th">
+            <ion-col>ผู้ชายรอบเอว >= 90</ion-col>
+            <ion-col>กลุ่มเสี่ยง</ion-col>
+        </ion-row>
+        <ion-row color="warning" class="font-th">
+            <ion-col>ผู้หญิงรอบเอว >= 80</ion-col>
+            <ion-col>กลุ่มเสี่ยง</ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+        <ion-row color="primary" class="font-th">
+            <ion-col><b>ค่า BMI</b></ion-col>
+            <ion-col><b>การแปลผล</b></ion-col>
+        </ion-row>
+        <ion-row color="yellow" class="font-th">
+            <ion-col>น้อยกว่า 18.5</ion-col>
+            <ion-col>ผอม</ion-col>
+        </ion-row>
+        <ion-row color="success" class="font-th">
+            <ion-col>18.5 - 22.9</ion-col>
+            <ion-col>ปกติ</ion-col>
+        </ion-row>
+        <ion-row color="yellow" class="font-th">
+            <ion-col>23 - 24.9</ion-col>
+            <ion-col>น้ำหนักตัวมากเกินไป</ion-col>
+        </ion-row>
+        <ion-row color="warning" class="font-th">
+            <ion-col>25 - 29.9</ion-col>
+            <ion-col>อ้วนมาก(ระดับ 1)</ion-col>
+        </ion-row>
+        <ion-row color="danger" class="font-th">
+            <ion-col>มากกว่า 30</ion-col>
+            <ion-col>อ้วนมาก(ระดับ 2)</ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

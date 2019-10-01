@@ -11,17 +11,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormuladmPage } from './pages/formuladm/formuladm.page';
 import { FormularhtPage } from './pages/formularht/formularht.page';
+import { FormulaobesityPage } from './pages/formulaobesity/formulaobesity.page';
 import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormuladmPage,
-    FormularhtPage
+    FormularhtPage,
+    FormulaobesityPage
   ],
   entryComponents: [
     FormuladmPage,
-    FormularhtPage
+    FormularhtPage,
+    FormulaobesityPage
   ],
   imports: [
     BrowserModule, 

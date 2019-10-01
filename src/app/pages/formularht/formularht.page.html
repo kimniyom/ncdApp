@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title class="headmenu">การคำนวณปัจจัยเสี่ยงต่อการเป็นโรคเบาหวาน</ion-title>
+        <ion-title class="headmenu">การแปลผลความดันโลหิตสูง</ion-title>
         <ion-buttons slot="primary">
             <ion-button (click)="dismiss()">
                 <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -10,5 +10,38 @@
 </ion-header>
 
 <ion-content>
-
+    <ion-grid>
+        <ion-row color="medium">
+            <ion-col><b>ระดับความดันโลหิต</b></ion-col>
+            <ion-col><b>ค่าบน</b></ion-col>
+            <ion-col><b>ค่าล่าง</b></ion-col>
+            <ion-col><b>คำแนะนำ</b></ion-col>
+        </ion-row>
+        <ion-row color="danger">
+            <ion-col>อันตราย</ion-col>
+            <ion-col>> 160</ion-col>
+            <ion-col>> 100</ion-col>
+            <ion-col>พบแพทย์ด่วน</ion-col>
+        </ion-row>
+        <ion-row color="warning">
+            <ion-col>สูงมาก</ion-col>
+            <ion-col>140 - 159</ion-col>
+            <ion-col>90 - 99</ion-col>
+            <ion-col>พบแพทย์</ion-col>
+        </ion-row>
+        <ion-row color="yellow">
+            <ion-col>ค่อนข้างสูง</ion-col>
+            <ion-col>121 - 139</ion-col>
+            <ion-col>80 - 89</ion-col>
+            <ion-col>ปรึกษาแพทย์</ion-col>
+        </ion-row>
+        <ion-row color="success">
+            <ion-col>ปกติ</ion-col>
+            <ion-col>
+                < 120</ion-col>
+                    <ion-col>
+                        < 80</ion-col>
+                            <ion-col>ควรเช็คความดันโลหิตสม่ำเสมอ</ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

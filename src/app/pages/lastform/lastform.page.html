@@ -63,10 +63,16 @@
 
     <ion-card class="lastmenu">
         <ion-card-content style="text-align: center;">
-            <h1 class="headmenu">ผลประเมิน Obesity (อ้วน) {{ bmi }}</h1>
-            <h2 class="headmenuvalue">ผล {{ bmiValue }}</h2>
+            <h1 class="headmenu">ผลประเมิน Obesity (อ้วน)</h1>
+            <h2 class="headmenuvalue">รอบเอว {{ waistline }} = {{ waistlineText }}</h2>
+            <hr/>
+            <h1 class="headmenu">การแปลผลภาวะอ้วนผอมของร่างกาย ()</h1>
+            <h2 class="headmenuvalue">BMI {{ bmi }} = {{ bmiValue }}</h2>
             <h3 style="color: red;">คำแนะนำ</h3>
             <ion-img src="/assets/img/fat.jpg"></ion-img>
+            <ion-button (click)="popupObesity()">
+                <ion-icon name="more"></ion-icon> การคำนวณ
+            </ion-button>
         </ion-card-content>
     </ion-card>
 
