@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AlertController,LoadingController } from '@ionic/angular';
 import { Platform, NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Network } from '@ionic-native/network/ngx';
 @Component({
   selector: 'app-form',
   templateUrl: './form.page.html',
@@ -18,18 +20,21 @@ export class FormPage implements OnInit {
   age;
   hospcode;
   showTrue: boolean = false;
+  
   constructor(
     private router: Router,
     private alert: AlertController,
     private http: Http,
     public loadingController: LoadingController,
+    private statusBar: StatusBar,
     @Inject('API_URL') private API_URL: string,
   ) { }
 
   ngOnInit() {
-
+    this.statusBar.backgroundColorByHexString('#1d80bb');
+   
   }
-
+  
   async Alert(text) {
     const alert = await this.alert.create({
       header: '!แจ้งเตือน',
@@ -53,7 +58,8 @@ export class FormPage implements OnInit {
 
     //console.log('Loading dismissed!');
   }
-*/
+ */
+
   async presentLoading() {
     this.isLoading = true;
     return await this.loadingController.create({

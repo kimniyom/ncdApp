@@ -1,0 +1,89 @@
+@font-face {
+    font-family: thaisanslite;
+    src: url('./../../../assets/thaisanslite/thaisanslite_r1.ttf') format('truetype');
+}
+
+
+/*********************************
+2. Body and some general stuff
+*********************************/
+
+#font-th {
+    font-family: 'thaisanslite';
+}
+
+.font-th {
+    font-family: 'thaisanslite';
+}
+
+#head-form {
+    font-size: 18px;
+}
+
+.headmenu {
+    font-family: 'thaisanslite';
+    font-weight: bold;
+    color: green;
+    font-size: 20px;
+}
+
+.headmenuvalue {
+    font-family: 'thaisanslite';
+    color: #999999;
+    font-size: 18px;
+}
+
+.subheadmenu {
+    font-family: 'thaisanslite';
+    font-weight: bold;
+    color: cadetblue;
+    font-size: 18px;
+}
+
+.content .font-th {
+    margin-left: 10px;
+}
+
+.textboxlabel {
+    font-size: 18px;
+    font-family: 'thaisanslite';
+}
+
+.textbox {
+    font-size: 16px;
+    font-family: 'thaisanslite';
+}
+
+.bg-head {
+    background-color: rgb(0, 129, 151);
+    margin: 0px;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+}
+
+.bg-head .text-color {
+    color: #ffffff;
+    font-family: 'thaisanslite';
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.bg-lastform {
+    --background: #eeeeee;
+}
+
+h3 {
+    font-size: 16px;
+    font-family: 'thaisanslite';
+}
+
+.lastmenu {
+    --background: #ffffff;
+}
+
+ion-content {
+    --background: linear-gradient(to top, #ffffff 0%, #1d80bb 100%);
+}
