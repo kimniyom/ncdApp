@@ -24,6 +24,19 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.statusBar.backgroundColorByHexString('#fffee6');
     this.checkToken();
+
+    let now = new Date();
+    let yearNow: number = (now.getFullYear() + (now.getMonth() + 1));
+    let budGetyear;
+    let yearBudget: number = (now.getFullYear() + 9);
+    if(yearNow > yearBudget){
+      budGetyear = ((now.getFullYear() + 1) + 543);
+    } else {
+      budGetyear = (now.getFullYear() + 543);
+    }
+
+    sessionStorage.setItem('budgetYear',budGetyear);
+
   }
 
   async Alert(text) {

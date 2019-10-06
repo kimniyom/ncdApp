@@ -525,7 +525,7 @@ export class LastformPage implements OnInit {
   }
 
   async save() {
-    let year = new Date().getFullYear();
+    let year = sessionStorage.getItem('budgetYear');
     let data = {
       cid: this.cid,
       name: this.name,
