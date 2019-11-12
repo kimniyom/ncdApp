@@ -112,13 +112,14 @@ export class FormPage implements OnInit {
         } else {
           this.sex = "F";
         }
-
+        /*
         if(person.AGE < 35){
           this.closeLoading();
           this.showTrue = false;
           this.Alert("อายุไม่ได้อยู่ในช่วงการคัดกรอง...");
           return false;
         }
+        */
       }
       this.age = person.AGE;
       this.hospcode = person.HOSPCODE;
