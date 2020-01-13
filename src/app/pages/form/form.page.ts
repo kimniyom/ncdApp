@@ -1,16 +1,21 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit,Inject, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController,LoadingController } from '@ionic/angular';
+import { AlertController,LoadingController, ToastController } from '@ionic/angular';
 import { Platform, NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Network } from '@ionic-native/network/ngx';
+import { SelectSearchableComponent } from 'ionic-select-searchable';
+import { IonicSelectableComponent } from 'ionic-selectable';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-form',
   templateUrl: './form.page.html',
   styleUrls: ['./form.page.scss'],
 })
 export class FormPage implements OnInit {
+  
+  school = null;
   isLoading = false;
   cid;
   name;
@@ -19,21 +24,33 @@ export class FormPage implements OnInit {
   privilege;
   age;
   hospcode;
+  type;
   showTrue: boolean = false;
-  
+  showType: boolean = true;
+  schoolList = [];
   constructor(
     private router: Router,
     private alert: AlertController,
     private http: Http,
     public loadingController: LoadingController,
     private statusBar: StatusBar,
+    private toastCtrl: ToastController,
     @Inject('API_URL') private API_URL: string,
+    @Inject('API_URL_NCD') private API_URL_NCD: string,
   ) { }
 
   ngOnInit() {
     this.statusBar.backgroundColorByHexString('#1d80bb');
-   
+    this.type = "1";
+    this.getSchool();
   }
+
+  portChange(event: {
+    component: IonicSelectableComponent,
+    value: any
+  }){
+    console.log('port:',event.value)
+  };
   
   async Alert(text) {
     const alert = await this.alert.create({
@@ -82,10 +99,22 @@ export class FormPage implements OnInit {
 
   checkCid(){
     let cid = this.cid;
-    if (!this.cid || !this.privilege) {
+    if (!this.cid) {
       //alert("กรอกข้อมูลไม่ครบ...");
       this.Alert("กรอกข้อมูลไม่ครบ...");
       return false;
+    }
+
+    if(this.type == 1){
+      if(!this.privilege){
+        this.Alert("กรุณาเลือกสิทธิ์...");
+      return false;
+      }
+    } else if(this.type == 2){
+      if(!this.school){
+        this.Alert("กรุณาเลือกโรงเรียน...");
+      return false;
+      }
     }
 
     if(cid.length != 13){
@@ -127,7 +156,7 @@ export class FormPage implements OnInit {
   }
 
   save() {
-    if (!this.cid || !this.privilege || !this.name || !this.lname || !this.age || !this.sex) {
+    if (!this.cid || !this.name || !this.lname || !this.age || !this.sex) {
       this.Alert("กรอกข้อมูลไม่ครบ...");
       return false;
     }
@@ -144,6 +173,24 @@ export class FormPage implements OnInit {
     //console.log(data);
     sessionStorage.setItem("form", JSON.stringify(data));
     this.router.navigateByUrl('/page1');
+  }
+
+  getSchool(){
+    this.http.get(this.API_URL_NCD + "/school/").subscribe(res => {
+      let data =  res.json();
+      let school = data.rows;
+      this.schoolList = school;
+      console.log(school);
+    })
+  }
+
+  checkType(){
+    let type = this.type;
+    if(type == 1){
+      this.showType = true;
+    } else if(type == 2){
+      this.showType = false;
+    }
   }
 
 }

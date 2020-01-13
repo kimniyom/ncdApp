@@ -12,6 +12,9 @@ import { AppComponent } from './app.component';
 import { FormuladmPage } from './pages/formuladm/formuladm.page';
 import { FormularhtPage } from './pages/formularht/formularht.page';
 import { FormulaobesityPage } from './pages/formulaobesity/formulaobesity.page';
+
+import { SelectSearchableModule } from 'ionic-select-searchable';
+import { IonicSelectableModule } from 'ionic-selectable';
 import { from } from 'rxjs';
 
 @NgModule({
@@ -30,7 +33,10 @@ import { from } from 'rxjs';
     BrowserModule, 
     HttpModule,
     IonicModule.forRoot(), 
-    AppRoutingModule],
+    AppRoutingModule,
+    SelectSearchableModule,
+    IonicSelectableModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,

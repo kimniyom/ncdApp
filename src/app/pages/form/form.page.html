@@ -17,22 +17,36 @@
     <ion-card style="background: #ffffff;">
         <ion-card-header style="padding:10px; padding-top:20px;padding-bottom:20px;">
             <ion-card-title class="textboxlabel" style="text-align: center;">
-                แบบคัดกรองเบาหวานและความดันโลหิต<br /> ในประชากรอายุ 35 ปี
+                แบบคัดกรองเบาหวานและความดันโลหิต
             </ion-card-title>
         </ion-card-header>
     </ion-card>
     <div style="text-align: center;">
         <img src="/assets/img/img-home.png" />
     </div>
+
+
+
     <ion-label class="textboxlabel" style="color:#ffffff;">ผู้รับการตรวจ</ion-label>
-    <ion-list style="border-radius: 10px; margin-bottom: 10px; padding-top: 10px;">
+    <ion-list>
         <ion-item>
+            <ion-label position="stacked" class="textboxlabel">ประเภทผู้ถูกประเมิณ*</ion-label>
+            <ion-select [(ngModel)]="type" class="textbox" okText="ตกลง" cancelText="ยกเลิก" (ionChange)="checkType()">
+                <ion-select-option value="1" class="textbox">ประชาชนทั่วไป</ion-select-option>
+                <ion-select-option value="2" class="textbox">นักเรียน / นักศึกษา</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item *ngIf="showType">
             <ion-label position="stacked" class="textboxlabel">สิทธิ*</ion-label>
             <ion-select [(ngModel)]="privilege" class="textbox" okText="ตกลง" cancelText="ยกเลิก">
                 <ion-select-option value="1" class="textbox">ผู้ประกันตน</ion-select-option>
                 <ion-select-option value="2" class="textbox">ข้าราชการ</ion-select-option>
                 <ion-select-option value="3" class="textbox">สิทธิหลักประกันสุขภาพถ้วนหน้า</ion-select-option>
             </ion-select>
+        </ion-item>
+        <ion-item *ngIf="!showType">
+            <ion-label class="textboxlabel">โรงเรียน</ion-label>
+            <ionic-selectable class="textbox" item-content [(ngModel)]="school" [items]="schoolList" itemValueField="id" itemTextField="schoolname" [canSearch]="true" (onChange)="portChange($event)"></ionic-selectable>
         </ion-item>
         <ion-item>
             <ion-label position="stacked" class="textboxlabel">เลขที่บัตรประชาชน*</ion-label>
