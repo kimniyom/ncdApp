@@ -25,12 +25,10 @@
         <img src="/assets/img/img-home.png" />
     </div>
 
-
-
-    <ion-label class="textboxlabel" style="color:#ffffff;">ผู้รับการตรวจ</ion-label>
-    <ion-list>
+    <ion-label class="textboxlabel" style="color:#ffffff; margin-bottom: 20px;">ผู้รับการตรวจ</ion-label><br />
+    <ion-list style="padding-bottom: 20px;border-radius: 10px;">
         <ion-item>
-            <ion-label position="stacked" class="textboxlabel">ประเภทผู้ถูกประเมิณ*</ion-label>
+            <ion-label position="stacked" class="textboxlabel">ประเภทผู้ถูกประเมิน*</ion-label>
             <ion-select [(ngModel)]="type" class="textbox" okText="ตกลง" cancelText="ยกเลิก" (ionChange)="checkType()">
                 <ion-select-option value="1" class="textbox">ประชาชนทั่วไป</ion-select-option>
                 <ion-select-option value="2" class="textbox">นักเรียน / นักศึกษา</ion-select-option>
@@ -46,19 +44,23 @@
         </ion-item>
         <ion-item *ngIf="!showType">
             <ion-label class="textboxlabel">โรงเรียน</ion-label>
-            <ionic-selectable class="textbox" item-content [(ngModel)]="school" [items]="schoolList" itemValueField="id" itemTextField="schoolname" [canSearch]="true" (onChange)="portChange($event)"></ionic-selectable>
+            <ionic-selectable class="textbox" item-content [(ngModel)]="school" [items]="schoolList" itemValueField="id"
+                itemTextField="schoolname" [canSearch]="true" (onChange)="portChange($event)"></ionic-selectable>
         </ion-item>
         <ion-item>
             <ion-label position="stacked" class="textboxlabel">เลขที่บัตรประชาชน*</ion-label>
-            <ion-input type="password" maxlength="13" pattern="(^0)([1-9]){8}([0-9])$" [(ngModel)]="cid" class="textbox"></ion-input>
+            <ion-input type="password" maxlength="13" pattern="(^0)([1-9]){8}([0-9])$" [(ngModel)]="cid"
+                class="textbox"></ion-input>
         </ion-item>
+
+        <div style="text-align: center; margin-bottom: 10px;">
+            <ion-button class="textboxlabel" color="success" (click)="checkCid()">ตรวจสอบข้อมูล</ion-button>
+        </div>
     </ion-list>
-    <div style="text-align: center; margin-bottom: 10px;">
-        <ion-button class="textboxlabel" color="success" (click)="checkCid()">ตรวจสอบข้อมูล</ion-button>
-    </div>
+
 
     <div *ngIf="showTrue == true">
-        <ion-list style="border-radius: 10px; margin-bottom: 10px; padding-top: 10px;">
+        <ion-list style="border-radius: 10px; margin-bottom: 10px; padding-top: 10px; margin-top: 20px;">
             <ion-item>
                 <ion-label position="stacked" class="textboxlabel">ชื่อ*</ion-label>
                 <ion-input class="textbox" [(ngModel)]="name" readonly="readonly"></ion-input>

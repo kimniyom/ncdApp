@@ -161,6 +161,12 @@ export class FormPage implements OnInit {
       return false;
     }
     
+    let school = "";
+    if(this.type == 1){
+      school = "";
+    } else {
+      school = this.school.id;
+    }
     let data = {
       cid: this.cid,
       sex: this.sex,
@@ -168,7 +174,9 @@ export class FormPage implements OnInit {
       lname: this.lname,
       age: this.age,
       privilege: this.privilege,
-      hospcode: this.hospcode
+      hospcode: this.hospcode,
+      type: this.type,
+      school: school
     }
     //console.log(data);
     sessionStorage.setItem("form", JSON.stringify(data));
@@ -185,6 +193,7 @@ export class FormPage implements OnInit {
   }
 
   checkType(){
+    this.showTrue = false;
     let type = this.type;
     if(type == 1){
       this.showType = true;

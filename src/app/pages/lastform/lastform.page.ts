@@ -108,6 +108,9 @@ export class LastformPage implements OnInit {
   drinkmotorcycle;
   accident;
   scoreDmValue;
+  school;
+  type;
+  showResult: boolean = true;
   //
   htRecommend;
   constructor(
@@ -133,7 +136,8 @@ export class LastformPage implements OnInit {
     this.sex = item.sex;
     this.age = item.age;
     this.privilege = item.privilege;
-
+    this.school = item.school;
+    this.type = item.type;
     let page1 = JSON.parse(sessionStorage.getItem('page1'));
     this.mom_dm = page1.mom_dm;//เบาหวาน
     this.mom_ht = page1.mom_ht;//ความดัน
@@ -217,6 +221,12 @@ export class LastformPage implements OnInit {
     let htGroup = this.getHtvalue();
     this.ht = htGroup.group;
     this.htRecommend = htGroup.recommend;
+
+    if(this.type == 1){
+      this.showResult = true;
+    } else {
+      this.showResult = false;
+    }
   }
 
   async presentLoading() {
@@ -351,6 +361,8 @@ export class LastformPage implements OnInit {
       ageScore = 1;
     } else if (age >= 50) {
       ageScore = 2;
+    } else {
+      ageScore = 0;
     }
 
     if (bmi < 23) {
@@ -509,22 +521,21 @@ export class LastformPage implements OnInit {
     this.bp_avg_start = bpstart;
     this.bp_avg_end = bpend;
 
-    if (bpstart < 120 && bpend > 80) {
-      return { group: 'กลุ่มปกติ(มีปัจจัยเสี่ยง)', recommend: 'ควรเช็คความดันโลหิตสม่ำเสมอ' };
-    } else if ((bpstart >= 120 && bpstart <= 139) && (bpend >= 80 && bpend <= 89)) {
-      return { group: 'สงสัยรายใหม่', recommend: 'ปรึกษาแพทย์' };
-    } else if ((bpstart >= 140 && bpstart <= 159) && (bpend >= 90 && bpend <= 99)) {
-      return { group: 'กลุ่มเสี่ยงสูง', recommend: 'พบแพทย์' };
-    } else if (bpstart >= 160 && bpend >= 100) {
-      return { group: 'กลุ่มเสี่ยงสูงมาก', recommend: 'พบแพทย์ด่วน' };
-    } else if (bpstart <= 120 && bpend <= 80) {
+    if ((bpstart > 50 && bpstart < 120) || (bpend > 150 && bpend < 80)) {
       return { group: 'กลุ่มปกติ', recommend: 'ควรเช็คความดันโลหิตสม่ำเสมอ' };
-    } else {
-      return { group: 'ไม่อยู่ในช่วงเงื่อนไข', recommend: '-' };
+    } else if ((bpstart >= 120 && bpstart <= 139) || (bpend >= 80 && bpend <= 89)) {
+      return { group: 'กลุ่มเสี่ยง', recommend: 'พบแพทย์ด่วน' };
+    } else if (bpstart >= 140 || bpend >= 90) {
+      return { group: 'สงสัยป่วย', recommend: 'ปรึกษาแพทย์' };
+    } else if(bpstart < 50 && bpend < 50){
+      return { group: 'นอกเกณฑ์ ค่า SBP < 50 และ DBP < 50', recommend: '-' };
+    } else if(bpstart < 50 || bpend < 50){
+      return { group: 'นอกเกณฑ์ ค่า SBP < 50 หรือ DBP < 50', recommend: '-' };
     }
   }
 
   async save() {
+    try{
     let year = sessionStorage.getItem('budgetYear');
     let data = {
       cid: this.cid,
@@ -599,7 +610,9 @@ export class LastformPage implements OnInit {
       accident: this.accident,
       age: this.age,
       year: year,
-      token: this.token
+      token: this.token,
+      type: this.type,
+      school: this.school
     }
 
     await this.http.post(this.API_URL_NCD + "/ncd/log", data).subscribe(res => {
@@ -628,6 +641,10 @@ export class LastformPage implements OnInit {
         })
       }
     })
+  } catch(e){
+    this.Alert("เกิดข้อผิดพลาด...!");
+    console.error(e);
+  }
     //console.log(data);
   }
 
