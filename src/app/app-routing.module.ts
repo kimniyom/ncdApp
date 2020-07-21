@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', loadChildren: './home/home.module#HomePageModule' },
+  { path: '', loadChildren: './main/main.module#MainPageModule' },
   { path: 'form', loadChildren: './pages/form/form.module#FormPageModule' },
   { path: 'page1', loadChildren: './pages/page1/page1.module#Page1PageModule' },
   { path: 'page2', loadChildren: './pages/page2/page2.module#Page2PageModule' },
@@ -22,7 +22,9 @@ const routes: Routes = [
   { path: 'formuladm', loadChildren: './pages/formuladm/formuladm.module#FormuladmPageModule' },
   { path: 'formularht', loadChildren: './pages/formularht/formularht.module#FormularhtPageModule' },
   { path: 'formulaobesity', loadChildren: './pages/formulaobesity/formulaobesity.module#FormulaobesityPageModule' },
-  { path: 'nonconnection', loadChildren: './pages/nonconnection/nonconnection.module#NonconnectionPageModule' }
+  { path: 'nonconnection', loadChildren: './pages/nonconnection/nonconnection.module#NonconnectionPageModule' },
+  //{ path: 'main', loadChildren: './main/main.module#MainPageModule' }
+
 
 
 ];
