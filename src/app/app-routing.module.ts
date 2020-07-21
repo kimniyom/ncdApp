@@ -21,7 +21,8 @@ const routes: Routes = [
   { path: 'success', loadChildren: './pages/success/success.module#SuccessPageModule' },
   { path: 'formuladm', loadChildren: './pages/formuladm/formuladm.module#FormuladmPageModule' },
   { path: 'formularht', loadChildren: './pages/formularht/formularht.module#FormularhtPageModule' },
-  { path: 'formulaobesity', loadChildren: './pages/formulaobesity/formulaobesity.module#FormulaobesityPageModule' },  { path: 'nonconnection', loadChildren: './pages/nonconnection/nonconnection.module#NonconnectionPageModule' }
+  { path: 'formulaobesity', loadChildren: './pages/formulaobesity/formulaobesity.module#FormulaobesityPageModule' },
+  { path: 'nonconnection', loadChildren: './pages/nonconnection/nonconnection.module#NonconnectionPageModule' }
 
 
 ];

@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { ModalController, AlertController } from '@ionic/angular';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { UserService } from '../api/user.service';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -18,6 +19,7 @@ export class HomePage implements OnInit {
     private alert: AlertController,
     private statusBar: StatusBar,
     private modalController: ModalController,
+    private service: UserService,
     @Inject('API_URL_NCD') private API_URL_NCD: string,
   ) { }
 
@@ -36,7 +38,6 @@ export class HomePage implements OnInit {
     }
 
     sessionStorage.setItem('budgetYear',budGetyear);
-
   }
 
   async Alert(text) {
@@ -50,7 +51,7 @@ export class HomePage implements OnInit {
     await alert.present();
   }
 
-  checkToken() {
+ async checkToken() {
     let token = localStorage.getItem('token');
     if (!token) {
       this.http.get(this.API_URL_NCD + "/login/gentoken").subscribe(res => {
