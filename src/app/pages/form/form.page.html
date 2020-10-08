@@ -1,6 +1,45 @@
 <ion-content>
+
+    <div class="slides ion-margin-bottom">
+        <ion-slides [options]="slidesOptions">
+            <ion-slide>
+                <ion-card>
+                    <ion-card-header>
+                        <div class="main">
+                            <img src="/assets/img/img-home.png" />
+                        </div>
+                    </ion-card-header>
+                    <ion-card-content class="ion-text-left">
+                        <ion-card-title class="font-th">แบบคัดกรองเบาหวาน</ion-card-title>
+                        <ion-card-subtitle class="font-th" style="font-size:20px;">และความดันโลหิต</ion-card-subtitle>
+                        <ion-progress-bar value="0.5" color="custom"></ion-progress-bar>
+                    </ion-card-content>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+    </div>
+
+    <div class="container">
+        <ion-item lines="none" style="margin: 10px; border-radius:10px;">
+            <ion-grid>
+                <ion-row class="ion-align-items-center">
+                    <ion-col size="3">
+                        <ion-button color="light" fill="clear">
+                            <ion-icon slot="icon-only" name="document"></ion-icon>
+                        </ion-button>
+                    </ion-col>
+                    <ion-col size="7">
+                        <ion-input type="password" maxlength="13" pattern="[0-9]*" [(ngModel)]="cid" name="cid" class="textbox">
+                        </ion-input>
+                    </ion-col>
+                    <ion-col size="2"></ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </div>
+
     <div class="textboxlabel" style="text-align: center; font-size: 24px; text-align: center; margin-top: 50px;">
-        แบบคัดกรองเบาหวานและความดันโลหิต
+
     </div>
 
     <div style="text-align: center;">
@@ -19,8 +58,7 @@
 
             <ion-item>
                 <ion-label position="stacked" class="textboxlabel">ประเภทผู้ถูกประเมิน*</ion-label>
-                <ion-select [(ngModel)]="type" class="textbox" okText="ตกลง" cancelText="ยกเลิก"
-                    (ionChange)="checkType()">
+                <ion-select [(ngModel)]="type" class="textbox" okText="ตกลง" cancelText="ยกเลิก" (ionChange)="checkType()">
                     <ion-select-option value="1" class="textbox">ประชาชนทั่วไป</ion-select-option>
                     <ion-select-option value="2" class="textbox">นักเรียน / นักศึกษา</ion-select-option>
                 </ion-select>
@@ -35,8 +73,7 @@
             </ion-item>
             <ion-item *ngIf="!showType">
                 <ion-label class="textboxlabel">โรงเรียน</ion-label>
-                <ionic-selectable class="textbox" item-content [(ngModel)]="school" [items]="schoolList"
-                    itemValueField="id" itemTextField="schoolname" [canSearch]="true" (onChange)="portChange($event)">
+                <ionic-selectable class="textbox" item-content [(ngModel)]="school" [items]="schoolList" itemValueField="id" itemTextField="schoolname" [canSearch]="true" (onChange)="portChange($event)">
                 </ionic-selectable>
             </ion-item>
 
@@ -47,7 +84,7 @@
         </ion-list>
     </ion-card>
 
-    <div>
+    <div style="display: none;">
         <ion-card style="background-color: #ffffff; margin: 10px;">
             <ion-list style="border-radius: 0px; margin-bottom: 10px; padding-top: 10px; margin-top: 20px;">
                 <ion-item>

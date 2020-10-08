@@ -4,9 +4,14 @@
 
 export const environment = {
   production: false,
-  //apiUrl: 'http://localhost:5050',
+  apiUrl: 'http://localhost:1990',
+  apiUrlNcd: 'http://localhost:5555',
+
+  //Server
+  /*
   apiUrl: 'https://api.takpho.go.th',
   apiUrlNcd: 'https://ncd.takpho.go.th',
+  */
 };
 
 /*

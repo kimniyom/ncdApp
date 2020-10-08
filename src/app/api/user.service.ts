@@ -14,7 +14,8 @@ export class UserService {
   ) { }
 
   async getPerson(CID: any){
-    return this.http.get(this.API_URL + "/person/" + CID).toPromise();
+    let data = {cid: CID};
+    return this.http.post(this.API_URL + "/person/",data).toPromise();
   }
 
 }

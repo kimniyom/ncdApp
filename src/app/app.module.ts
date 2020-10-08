@@ -16,6 +16,7 @@ import { FormulaobesityPage } from './pages/formulaobesity/formulaobesity.page';
 
 import { SelectSearchableModule } from 'ionic-select-searchable';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { PersondetailPageModule } from './pages/persondetail/persondetail.module';
 import { from } from 'rxjs';
 
 @NgModule({
@@ -37,7 +38,8 @@ import { from } from 'rxjs';
     IonicModule.forRoot(), 
     AppRoutingModule,
     SelectSearchableModule,
-    IonicSelectableModule
+    IonicSelectableModule,
+    PersondetailPageModule
   ],
   providers: [
     StatusBar,

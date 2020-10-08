@@ -1,13 +1,13 @@
 import { Component, OnInit,Inject, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController,LoadingController, ToastController } from '@ionic/angular';
-import { Platform, NavController } from 'ionic-angular';
+import { AlertController,LoadingController, ToastController, ModalController } from '@ionic/angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { SelectSearchableComponent } from 'ionic-select-searchable';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { UserService } from '../../api/user.service';
+import { PersondetailPage } from '../persondetail/persondetail.page';
 import { from } from 'rxjs';
 @Component({
   selector: 'app-form',
@@ -38,6 +38,8 @@ export class FormPage implements OnInit {
     private statusBar: StatusBar,
     private toastCtrl: ToastController,
     private service: UserService,
+    public modalController: ModalController,
+ 
     @Inject('API_URL') private API_URL: string,
     @Inject('API_URL_NCD') private API_URL_NCD: string,
   ) {
@@ -135,7 +137,7 @@ export class FormPage implements OnInit {
       return false;
     }
 
-     await this.getPerson(cid);
+     this.getPerson(cid);
     //this.presentLoading();
     /*
     await this.http.post(this.API_URL + "/person/",{cid: cid}).subscribe(res => {
@@ -198,17 +200,36 @@ export class FormPage implements OnInit {
       //this.showperson = true;
       this.name = person.NAME;
       this.lname = person.LNAME;
+      let sex;
       if(person.SEX == 1){
-        this.sex = "M";
+        sex = "M";
       } else {
-        this.sex = "F";
+        sex = "F";
       }
 
       this.age = person.AGE;
       this.hospcode = person.HOSPCODE;
+
+      await this.presentModal(person.NAME,person.LNAME,sex,person.AGE,person.HOSPCODE);
     }
     
     
+  }
+
+
+  async presentModal(name,lname,sex,age,pcu) {
+    const modal = await this.modalController.create({
+      component: PersondetailPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        'firstName': name,
+        'lastName': lname,
+        'sex': sex,
+        'age': age,
+        'pcu': pcu
+      }
+    });
+    return await modal.present();
   }
 
  async save() {

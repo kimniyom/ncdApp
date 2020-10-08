@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title class="font-th">
+            ข้อมูลผู้ถูกคัดกรอง
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismiss()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<!--
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="/assets/img/m6.png">
+            </ion-avatar>
+            <h2 class="font-th">{{ firstName }} {{ lastName }}</h2>
+        </ion-item>
+
+        <ion-item>
+            <ion-note item-end>
+            </ion-note>
+        </ion-item>
+    </ion-list>
+</ion-content>
+-->
+<ion-content fullscreen>
+    <ion-list>
+        <ion-item>
+            <ion-avatar slot="start">
+                <img src="/assets/img/m6.png">
+            </ion-avatar>
+            <ion-label>
+                <h1 class="font-th">ชื่อ-สกุล {{ firstName }} {{ lastName }}</h1>
+                <h1 class="font-th">อายุ {{ age }} ปี</h1>
+                <h1 class="font-th" *ngIf="sex === 'M'">เพศ
+                    <ion-icon name="man" color="success"></ion-icon> ชาย</h1>
+                <h1 class="font-th" *ngIf="sex === 'F'">เพศ
+                    <ion-icon name="woman" color="warning"></ion-icon> หญิง</h1>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>
