@@ -1,35 +1,55 @@
-<ion-content>
+<ion-content [fullscreen]="true">
+    <ion-toolbar no-shadow>
+        <ion-buttons slot="start">
+            <ion-back-button icon="arrow-back" defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-back-button icon="settings" defaultHref="home"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 
-    <div class="slides ion-margin-bottom">
-        <ion-slides [options]="slidesOptions">
-            <ion-slide>
-                <ion-card>
-                    <ion-card-header>
-                        <div class="main">
-                            <img src="/assets/img/img-home.png" />
-                        </div>
-                    </ion-card-header>
-                    <ion-card-content class="ion-text-left">
-                        <ion-card-title class="font-th">แบบคัดกรองเบาหวาน</ion-card-title>
-                        <ion-card-subtitle class="font-th" style="font-size:20px;">และความดันโลหิต</ion-card-subtitle>
-                        <ion-progress-bar value="0.5" color="custom"></ion-progress-bar>
-                    </ion-card-content>
-                </ion-card>
-            </ion-slide>
-        </ion-slides>
+
+    <div class="ion-padding" style="margin-right: 20px;">
+        <ion-card class="border-title">
+            <ion-img src="/assets/img/img-home.png"></ion-img>
+            <ion-card-content>
+                <ion-row>
+                    <ion-col size="12" class="ion-text-center ion-margin-bottom">
+                        <ion-card-title class="font-th" style="font-size: 34px;">แบบคัดกรอง</ion-card-title>
+                        <ion-card-subtitle class="font-th" style="font-size: 24px;">เบาหวาน<br/>และความดันโลหิต</ion-card-subtitle>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
     </div>
 
+    <!--
+    <svg class="back-blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#8295A3" d="M68.6,-33.5C81.6,-17.2,79.6,13.8,65.7,37.6C51.8,61.3,25.9,77.8,2.1,76.6C-21.7,75.4,-43.5,56.5,-54.2,34.6C-65,12.7,-64.8,-12.3,-53.9,-27.4C-43,-42.4,-21.5,-47.6,3.2,-49.4C27.9,-51.2,55.7,-49.7,68.6,-33.5Z" transform="translate(100 100)" />
+      </svg>
+    -->
+    <!--
+    <div class="slides ion-margin-bottom">
+        <div class="main">
+            <img src="/assets/img/img-home.png" />
+        </div>
+        <div class="ion-text-center">
+            <ion-card-title class="font-th">แบบคัดกรองเบาหวาน</ion-card-title>
+            <ion-card-subtitle class="font-th" style="font-size:20px;">และความดันโลหิต</ion-card-subtitle>
+        </div>
+    </div>
+-->
     <div class="container">
-        <ion-item lines="none" style="margin: 10px; border-radius:10px;">
-            <ion-grid>
+        <ion-item lines="none" style="margin: 10px; border-radius:14px; background: none; ">
+            <ion-grid style="height: 70px; margin-top: 10px;">
                 <ion-row class="ion-align-items-center">
                     <ion-col size="3">
-                        <ion-button color="light" fill="clear">
-                            <ion-icon slot="icon-only" name="document"></ion-icon>
+                        <ion-button color="blue" fill="clear">
+                            <ion-icon name="card"></ion-icon>
                         </ion-button>
                     </ion-col>
                     <ion-col size="7">
-                        <ion-input type="password" maxlength="13" pattern="[0-9]*" [(ngModel)]="cid" name="cid" class="textbox">
+                        <ion-input type="password" maxlength="13" placeholder="เลขบัตรประชาชน" pattern="[0-9]*" [(ngModel)]="cid" name="cid" class="textbox">
                         </ion-input>
                     </ion-col>
                     <ion-col size="2"></ion-col>
@@ -38,54 +58,44 @@
         </ion-item>
     </div>
 
-    <div class="textboxlabel" style="text-align: center; font-size: 24px; text-align: center; margin-top: 50px;">
+    <div class="container">
+        <ion-item lines="none" style="margin: 10px; border-radius:14px; background: #FFFFFF; height: 75px;">
+            <ion-label position="stacked" class="textboxlabel">ประเภทผู้ถูกประเมิน*</ion-label>
+            <ion-select [(ngModel)]="type" class="textbox" okText="ตกลง" cancelText="ยกเลิก" (ionChange)="checkType()">
+                <ion-select-option value="1" class="textbox">ประชาชนทั่วไป</ion-select-option>
+                <ion-select-option value="2" class="textbox">นักเรียน / นักศึกษา</ion-select-option>
+            </ion-select>
+        </ion-item>
 
     </div>
 
-    <div style="text-align: center;">
-        <img src="/assets/img/img-home.png" />
+    <!-- Crescent -->
+    <div class="container">
+
+        <ion-item lines="none" style="margin: 10px; border-radius:14px; background: #ffffff;  height: 75px;" *ngIf="showType">
+            <ion-label position="stacked" class="textboxlabel">สิทธิ*</ion-label>
+            <ion-select [(ngModel)]="privilege" class="textbox" okText="ตกลง" cancelText="ยกเลิก">
+                <ion-select-option value="1" class="textbox">ผู้ประกันตน</ion-select-option>
+                <ion-select-option value="2" class="textbox">ข้าราชการ</ion-select-option>
+                <ion-select-option value="3" class="textbox">สิทธิหลักประกันสุขภาพถ้วนหน้า</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item lines="none" style="margin: 10px; border-radius:14px; background: #FFFFFF; height: 75px;" *ngIf="!showType">
+            <ion-label position="stacked" class="textboxlabel">โรงเรียน</ion-label>
+            <ionic-selectable class="textbox" item-content [(ngModel)]="school" [items]="schoolList" itemValueField="id" itemTextField="schoolname" [canSearch]="true" (onChange)="portChange($event)">
+            </ionic-selectable>
+        </ion-item>
+
     </div>
 
-    <ion-card style="background: #ffffff; margin: 10px;">
-        <!-- Crescent -->
-        <ion-spinner name="dots" *ngIf="isLoading == true"></ion-spinner>
-        <ion-list style="padding-bottom: 20px;border-radius: 0px;">
-            <ion-item>
-                <ion-label position="stacked" class="textboxlabel">เลขที่บัตรประชาชน*</ion-label>
-                <ion-input type="password" maxlength="13" pattern="[0-9]*" [(ngModel)]="cid" name="cid" class="textbox">
-                </ion-input>
-            </ion-item>
 
-            <ion-item>
-                <ion-label position="stacked" class="textboxlabel">ประเภทผู้ถูกประเมิน*</ion-label>
-                <ion-select [(ngModel)]="type" class="textbox" okText="ตกลง" cancelText="ยกเลิก" (ionChange)="checkType()">
-                    <ion-select-option value="1" class="textbox">ประชาชนทั่วไป</ion-select-option>
-                    <ion-select-option value="2" class="textbox">นักเรียน / นักศึกษา</ion-select-option>
-                </ion-select>
-            </ion-item>
-            <ion-item *ngIf="showType">
-                <ion-label position="stacked" class="textboxlabel">สิทธิ*</ion-label>
-                <ion-select [(ngModel)]="privilege" class="textbox" okText="ตกลง" cancelText="ยกเลิก">
-                    <ion-select-option value="1" class="textbox">ผู้ประกันตน</ion-select-option>
-                    <ion-select-option value="2" class="textbox">ข้าราชการ</ion-select-option>
-                    <ion-select-option value="3" class="textbox">สิทธิหลักประกันสุขภาพถ้วนหน้า</ion-select-option>
-                </ion-select>
-            </ion-item>
-            <ion-item *ngIf="!showType">
-                <ion-label class="textboxlabel">โรงเรียน</ion-label>
-                <ionic-selectable class="textbox" item-content [(ngModel)]="school" [items]="schoolList" itemValueField="id" itemTextField="schoolname" [canSearch]="true" (onChange)="portChange($event)">
-                </ionic-selectable>
-            </ion-item>
+    <div class="container" style="margin-bottom: 20px;">
+        <ion-button class="textboxlabel" style="color: #FFFFFF;" size="large" expand="block" fill="solid" shape="round" (click)="checkCid()">ตรวจสอบข้อมูล</ion-button>
+    </div>
 
-
-            <div style="text-align: center; margin-bottom: 10px; margin-top: 20px;">
-                <ion-button class="textboxlabel" color="success" (click)="checkCid()">ตรวจสอบข้อมูล</ion-button>
-            </div>
-        </ion-list>
-    </ion-card>
-
-    <div style="display: none;">
-        <ion-card style="background-color: #ffffff; margin: 10px;">
+    <div>
+        <ion-card style="background-color: #ffffff; margin: 10px; display: none;">
             <ion-list style="border-radius: 0px; margin-bottom: 10px; padding-top: 10px; margin-top: 20px;">
                 <ion-item>
                     <ion-label position="stacked" class="textboxlabel">ชื่อ*</ion-label>
@@ -101,54 +111,24 @@
                     <ion-label position="stacked" class="textboxlabel">อายุ</ion-label>
                     <ion-input class="textbox" [(ngModel)]="age" readonly="readonly"></ion-input>
                 </ion-item>
-                <ion-radio-group [(ngModel)]="sex">
-                    <ion-list-header>
-                        <ion-label class="textboxlabel">เพศ</ion-label>
-                    </ion-list-header>
-                    <ion-item>
-                        <ion-icon name="man" color="success"></ion-icon>
-                        <ion-label class="textbox">ชาย</ion-label>
-                        <ion-radio slot="start" value="M" name="sex" disabled></ion-radio>
-                    </ion-item>
+                <ion-item>
+                    <ion-label position="stacked" class="textboxlabel">Agg</ion-label>
+                    <ion-input class="textbox" [(ngModel)]="sex" readonly="readonly"></ion-input>
+                </ion-item>
 
-                    <ion-item>
-                        <ion-icon name="woman" color="warning"></ion-icon>
-                        <ion-label class="textbox">หญิง</ion-label>
-                        <ion-radio slot="start" value="F" name="sex" disabled></ion-radio>
-                    </ion-item>
-                </ion-radio-group>
             </ion-list>
         </ion-card>
     </div>
-    <br /><br />
+
 </ion-content>
 
-<!--
-<ion-footer no-border>
-    <ion-toolbar>
-        <ion-buttons slot="start" routerLink="/">
-            <ion-button color="dark">
-                <ion-icon slot="icon-only" name="home"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-        <ion-buttons slot="end">
-            <ion-button color="green" (click)="save()">
-                <ion-icon slot="icon-only" name="save"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-footer>
--->
 
+<!--
 <ion-footer no-border>
     <ion-tab-bar slot="bottom">
         <ion-tab-button routerLink="/home">
             <ion-icon name="home" color="blue"></ion-icon>
             <ion-label>หน้าหลัก</ion-label>
-        </ion-tab-button>
-        <ion-tab-button (click)="refresh()">
-            <ion-icon name="refresh" color="blue"></ion-icon>
-            <ion-label>Refresh</ion-label>
         </ion-tab-button>
         <ion-tab-button (click)="save()">
             <ion-icon name="save" color="blue"></ion-icon>
@@ -157,3 +137,5 @@
     </ion-tab-bar>
 
 </ion-footer>
+
+-->

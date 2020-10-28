@@ -25,6 +25,7 @@ export class Group2Page implements OnInit {
 	waistline;
 	showfbs: boolean = true;
 	showsugar: boolean = true;
+	checkbody;
   constructor(
   	private router: Router,
     private alert: AlertController) { }

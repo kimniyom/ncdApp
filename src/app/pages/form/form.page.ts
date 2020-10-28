@@ -48,7 +48,7 @@ export class FormPage implements OnInit {
 
   ngOnInit() {
     this.statusBar.backgroundColorByHexString('#1d80bb');
-    this.type = "1";
+    this.type = "";
     this.cid = "";
     this.name = "";
     this.lname = "";
@@ -175,6 +175,7 @@ export class FormPage implements OnInit {
   }
 
   async getPerson(cid){
+    this.presentLoading();
     this.isLoading = true;
     this.showperson = false;
     let res: any = await this.service.getPerson(cid);
@@ -186,7 +187,7 @@ export class FormPage implements OnInit {
     
     //this.presentLoading();
     if(count <= 0){
-      //this.closeLoading();
+      this.closeLoading();
       this.isLoading = false;
       //this.showsearch = true;
       //this.showperson = false;
@@ -195,7 +196,7 @@ export class FormPage implements OnInit {
       //this.router.navigateByUrl('/home');
     } else {
       this.isLoading = false;
-      //this.closeLoading();
+      this.closeLoading();
       //this.showsearch = false;
       //this.showperson = true;
       this.name = person.NAME;
@@ -209,15 +210,24 @@ export class FormPage implements OnInit {
 
       this.age = person.AGE;
       this.hospcode = person.HOSPCODE;
+      this.sex = sex;
 
-      await this.presentModal(person.NAME,person.LNAME,sex,person.AGE,person.HOSPCODE);
+
+      let school = "";
+    if(this.type == 1){
+      school = "";
+    } else {
+      school = this.school.id;
+    }
+
+      await this.presentModal(person.NAME,person.LNAME,sex,person.AGE,person.HOSPCODE,school,this.cid,this.privilege,this.type);
     }
     
     
   }
 
 
-  async presentModal(name,lname,sex,age,pcu) {
+  async presentModal(name,lname,sex,age,pcu,school,cid,privilege,type) {
     const modal = await this.modalController.create({
       component: PersondetailPage,
       cssClass: 'my-custom-class',
@@ -226,14 +236,18 @@ export class FormPage implements OnInit {
         'lastName': lname,
         'sex': sex,
         'age': age,
-        'pcu': pcu
+        'pcu': pcu,
+        'school': school,
+        'cid': cid,
+        'privilege': privilege,
+        'type': type
       }
     });
     return await modal.present();
   }
 
  async save() {
-    if (!this.cid || !this.name || !this.lname || !this.age || !this.sex) {
+    if (!this.cid || !this.name || !this.lname || !this.age) {
       this.Alert("กรอกข้อมูลไม่ครบ...");
       return false;
     }

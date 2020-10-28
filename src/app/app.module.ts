@@ -10,9 +10,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormuladmPage } from './pages/formuladm/formuladm.page';
-import { FormularhtPage } from './pages/formularht/formularht.page';
-import { FormulaobesityPage } from './pages/formulaobesity/formulaobesity.page';
+//import { FormuladmPage } from './pages/formuladm/formuladm.page';
+//import { FormularhtPage } from './pages/formularht/formularht.page';
+//import { FormulaobesityPage } from './pages/formulaobesity/formulaobesity.page';
 
 import { SelectSearchableModule } from 'ionic-select-searchable';
 import { IonicSelectableModule } from 'ionic-selectable';
@@ -22,14 +22,14 @@ import { from } from 'rxjs';
 @NgModule({
   declarations: [
     AppComponent,
-    FormuladmPage,
-    FormularhtPage,
-    FormulaobesityPage
+    //FormuladmPage,
+    //FormularhtPage,
+    //FormulaobesityPage
   ],
   entryComponents: [
-    FormuladmPage,
-    FormularhtPage,
-    FormulaobesityPage
+    //FormuladmPage,
+    //FormularhtPage,
+    //FormulaobesityPage
   ],
   imports: [
     BrowserModule, 

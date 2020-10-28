@@ -12,4 +12,8 @@ export class FormulaobesityPage implements OnInit {
   ngOnInit() {
   }
 
+  dismiss(){
+    
+  }
+
 }

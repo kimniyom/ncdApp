@@ -4,7 +4,9 @@
             ข้อมูลผู้ถูกคัดกรอง
         </ion-title>
         <ion-buttons slot="end">
-            <ion-button (click)="dismiss()">Close</ion-button>
+            <ion-button (click)="dismiss()">
+                <ion-icon name="close-circle-outline"></ion-icon>
+            </ion-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
@@ -26,8 +28,13 @@
 </ion-content>
 -->
 <ion-content fullscreen>
+    <div class="ion-text-center">
+        <br/>
+        <ion-icon name="checkmark-circle-outline" color="green" style="font-size: 50px;"></ion-icon><br/>
+        <div class="font-th" style="font-size: 20px; color: green;">มีข้อมูลในระบบ</div>
+    </div>
     <ion-list>
-        <ion-item>
+        <ion-item lines="none">
             <ion-avatar slot="start">
                 <img src="/assets/img/m6.png">
             </ion-avatar>
@@ -40,5 +47,15 @@
                     <ion-icon name="woman" color="warning"></ion-icon> หญิง</h1>
             </ion-label>
         </ion-item>
+
     </ion-list>
+    <div class="container">
+        <ion-list>
+            <ion-item float-right lines="none">
+                <ion-button float-right class="textboxlabel" expand="block" fill="outline" color="warning" shape="round" (click)="save()">ขั้นตอนถัดไป
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-button>
+            </ion-item>
+        </ion-list>
+    </div>
 </ion-content>

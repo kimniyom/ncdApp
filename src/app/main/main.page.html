@@ -1,27 +1,33 @@
-
-
 <ion-content style="padding: 10px;">
-  <h4 style="font-family: thaisanslite; text-align: center; margin-top: 50px;">
-    ข้อตกลง / นโยบายความเป็นส่วนตัว
-  </h4>
-  <div style="text-align: center; margin-top: 20px;font-family: thaisanslite;">
-    <img src="/assets/img/logo_20160129060547.png" style="width: 100px;"/><br/>
-    สำนักงานสาธารณสุขจังหวัดตาก<br/>
-    ฝ่ายควบคุมโรคไม่ติดต่อ สุขภาพจิตและยาเสพติด<br/> โทร. 0-5551-8100
-  </div>
-  <ul style="font-family: thaisanslite; margin-right: 10px;">
-    <li>
-      Application จำเป็นต้องใช้ข้อมูลเลขบัตรประชาชน 13 หลักของท่านเพื่อยืนยันตัวตนกับฐานข้อมูลที่เก็บอยู่บนจังหวัด
-    </li>
-    <li>
-      Application จำเป็นต้องให้ท่านตอบแบบสอบถามซึ่ง เป็นข้อมูลส่วนตัวของท่านและครอบครัว เช่น ข้อมูล น้ำหนัก ส่วนสูง
-      ค่าความดันโลหิต การขับขี่ยานพาหนะ การดื่มเครื่องดื่มแอลกอฮอล์ เพื่อนำมาประมวลผลทางการแพทย์เบื้องต้น
-    </li>
-    <li>
-      ข้อมูลของท่านจะถูกเก็บเป็นความลับไม่นำเสนอต่อสาธารณและเพื่อเป็นประโยชน์ต่อตัวผู้ทำแบบประเมินกรุณาให้ท่านให้ข้อมูลตามจริง
-    </li>
-  </ul>
-  <div style="text-align: center; margin-bottom: 20px;">
-    <ion-button color="primary" shape="round" routerLink="/home">ยอมรับข้อตกลง</ion-button>
-  </div>
+    <h4 style="font-family: thaisanslite; text-align: center; margin-top: 50px;">
+        เลือกจังหวัด
+    </h4>
+    <ion-item>
+        <ion-label>เลือกจังหวัด</ion-label>
+        <ion-select placeholder="Select One">
+            <ion-select-option *ngFor="let item of lietProvince" value="{{ item.province }}">{{ item.province_name }}</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <h4 style="font-family: thaisanslite; text-align: center; margin-top: 50px;">
+        ข้อตกลง / นโยบายความเป็นส่วนตัว
+    </h4>
+    <div style="text-align: center; margin-top: 20px;font-family: thaisanslite;">
+        <img src="/assets/img/logo_20160129060547.png" style="width: 100px;" /><br/> สำนักงานสาธารณสุขจังหวัดตาก
+        <br/> ฝ่ายควบคุมโรคไม่ติดต่อ สุขภาพจิตและยาเสพติด<br/> โทร. 0-5551-8100
+    </div>
+    <ul style="font-family: thaisanslite; margin-right: 10px;">
+        <li>
+            Application จำเป็นต้องใช้ข้อมูลเลขบัตรประชาชน 13 หลักของท่านเพื่อยืนยันตัวตนกับฐานข้อมูลที่เก็บอยู่บนจังหวัด
+        </li>
+        <li>
+            Application จำเป็นต้องให้ท่านตอบแบบสอบถามซึ่ง เป็นข้อมูลส่วนตัวของท่านและครอบครัว เช่น ข้อมูล น้ำหนัก ส่วนสูง ค่าความดันโลหิต การขับขี่ยานพาหนะ การดื่มเครื่องดื่มแอลกอฮอล์ เพื่อนำมาประมวลผลทางการแพทย์เบื้องต้น
+        </li>
+        <li>
+            ข้อมูลของท่านจะถูกเก็บเป็นความลับไม่นำเสนอต่อสาธารณและเพื่อเป็นประโยชน์ต่อตัวผู้ทำแบบประเมินกรุณาให้ท่านให้ข้อมูลตามจริง
+        </li>
+    </ul>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <ion-button color="primary" shape="round" routerLink="/home">ยอมรับข้อตกลง</ion-button>
+    </div>
 </ion-content>
